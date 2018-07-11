@@ -1,0 +1,39 @@
+def deps = [:]
+
+def versions = [:]
+versions.kotlin = "1.2.30"
+
+def kotlin = [:]
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$versions.kotlin"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+deps.kotlin = kotlin
+
+def support = [:]
+support.appcompat_v7 = "com.android.support:appcompat-v7:27.0.2"
+deps.support = support
+
+def other = [:]
+other.constraintLayout = 'com.android.support.constraint:constraint-layout:1.0.2'
+other.junit = 'junit:junit:4.12'
+other.test_runner = 'com.android.support.test:runner:1.0.2'
+other.test_espresso = 'com.android.support.test.espresso:espresso-core:3.0.2'
+deps.other = other
+
+ext.deps = deps
+
+def build_versions = [:]
+build_versions.min_sdk = 15
+build_versions.compile_sdk = 26
+build_versions.target_sdk = 27
+build_versions.build_tools = "27.0.3"
+build_versions.version_code = 1
+build_versions.version_name = "1.0"
+ext.build_versions = build_versions
+
+def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+ext.addRepos = this.&addRepos

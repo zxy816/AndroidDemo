@@ -1,0 +1,20 @@
+buildscript {
+    ext {
+        versions = "${rootDir}/versions.gradle"
+        config = "${rootDir}/config.gradle"
+    }
+    apply from: versions
+    addRepos(repositories)
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.0'
+        classpath deps.kotlin.plugin
+    }
+}
+
+allprojects {
+    addRepos(repositories)
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
