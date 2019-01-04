@@ -1,7 +1,7 @@
 def deps = [:]
 
 def versions = [:]
-versions.kotlin = "1.2.30"
+versions.kotlin = "1.2.51"
 versions.paging = "1.0.0"
 versions.room = "1.1.1"
 
