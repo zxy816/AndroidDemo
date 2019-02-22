@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
-        val data = LivePagedListBuilder(PagingDataSourceFactory(DataRepository()),PagedList.Config.Builder()
+        val data = LivePagedListBuilder(PagingDataSourceFactory(DataRepository()), PagedList.Config.Builder()
                 .setPageSize(20)
                 .setInitialLoadSizeHint(20)
                 .setEnablePlaceholders(true).build()).build()
