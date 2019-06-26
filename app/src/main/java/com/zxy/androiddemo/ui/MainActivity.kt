@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         userSourceImpl = Injection.provideUserDao(this)
+//        insetTest()
         findUserBySex()
 
         //paging test
@@ -47,11 +48,11 @@ class MainActivity : AppCompatActivity() {
         user.sex = "男"
         user.age = 22
         user.phone = "18792430923"
-        userSourceImpl!!.insertUser(user)
+        userSourceImpl?.insertUser(user)
     }
 
     fun findUserBySex() {
-        val list = userSourceImpl!!.getUsersBySex("男")
+        val list = userSourceImpl?.getUsersBySex("男")
         if (list != null && list.size > 0) {
             for (i in list.indices) {
                 println(list[i].toString())

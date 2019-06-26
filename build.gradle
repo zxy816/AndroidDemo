@@ -1,20 +1,35 @@
+ext {
+    var = '1.0.0'
+}
 buildscript {
     ext {
-        versions = "${rootDir}/versions.gradle"
         config = "${rootDir}/config.gradle"
     }
-    apply from: versions
-    addRepos(repositories)
+    repositories {
+        jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+    }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
-        classpath deps.kotlin.plugin
+        classpath 'com.android.tools.build:gradle:3.4.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.11"
     }
 }
 
 allprojects {
-    addRepos(repositories)
+    repositories {
+        jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+    }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
