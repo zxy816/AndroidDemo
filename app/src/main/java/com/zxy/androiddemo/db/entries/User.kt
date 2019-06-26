@@ -12,7 +12,7 @@ import android.graphics.Bitmap
 class User {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "uid")
-    var uid: Int = 0git
+    var uid: Int = 0
 
     @ColumnInfo(name = "username")
     var userName: String? = null
