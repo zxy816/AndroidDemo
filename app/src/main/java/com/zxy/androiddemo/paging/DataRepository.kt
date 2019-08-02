@@ -14,10 +14,7 @@ class DataRepository {
     private val list = ArrayList<PagBean>()
 
     init {
-        for (i in 0..99) {
-            val pagBean = PagBean(i, "zxy$i")
-            list.add(pagBean)
-        }
+
     }
 
 

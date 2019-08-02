@@ -34,7 +34,3 @@ dependencies {
     testImplementation "android.arch.paging:common:1.0.1"
     implementation 'android.arch.paging:rxjava2:1.0.1'
 }
-
-repositories {
-    google()
-}
