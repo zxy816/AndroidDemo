@@ -1,16 +1,16 @@
 package com.zxy.androiddemo.adapter
 
-import android.arch.paging.PagedListAdapter
-import android.support.v7.util.DiffUtil
 import android.view.ViewGroup
-import com.zxy.androiddemo.bean.PagBean
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
+import com.zxy.androiddemo.db.entries.User
 
 /**
  * @author: zxy
  * @date: 2018/7/12
  * @des:
  */
-class PagingAdapter : PagedListAdapter<PagBean, PagingViewHolder>(callback) {
+class PagingAdapter : PagedListAdapter<User, PagingViewHolder>(callback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagingViewHolder {
         return PagingViewHolder(parent)
     }
@@ -20,15 +20,11 @@ class PagingAdapter : PagedListAdapter<PagBean, PagingViewHolder>(callback) {
     }
 
     companion object {
-        var callback = object : DiffUtil.ItemCallback<PagBean>() {
+        var callback = object : DiffUtil.ItemCallback<User>() {
 
-            override fun areItemsTheSame(oldItem: PagBean, newItem: PagBean): Boolean {
-                return oldItem.code == newItem.code
-            }
+            override fun areItemsTheSame(oldItem: User, newItem: User): Boolean = oldItem.uid == newItem.uid
 
-            override fun areContentsTheSame(oldItem: PagBean, newItem: PagBean): Boolean {
-                return oldItem === newItem
-            }
+            override fun areContentsTheSame(oldItem: User, newItem: User): Boolean = oldItem == newItem
         }
     }
 }

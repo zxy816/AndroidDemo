@@ -1,7 +1,7 @@
 package com.zxy.androiddemo.db.entries
 
-import android.arch.persistence.room.*
 import android.graphics.Bitmap
+import androidx.room.*
 
 /**
  * @author: zxy

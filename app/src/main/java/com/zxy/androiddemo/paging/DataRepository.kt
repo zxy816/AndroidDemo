@@ -1,6 +1,6 @@
 package com.zxy.androiddemo.paging
 
-import com.zxy.androiddemo.bean.PagBean
+import com.zxy.androiddemo.db.entries.User
 
 import java.util.ArrayList
 
@@ -11,18 +11,18 @@ import java.util.ArrayList
  */
 class DataRepository {
 
-    private val list = ArrayList<PagBean>()
+    private val list = ArrayList<User>()
 
     init {
 
     }
 
 
-    fun loadData(size: Int): List<PagBean> {
+    fun loadData(size: Int): List<User> {
         return list.subList(0, size)
     }
 
-    fun loadData(index: Int, size: Int): List<PagBean>? {
+    fun loadData(index: Int, size: Int): List<User>? {
         if (index >= list.size - 1 || index < 1) {
             return null
         }
@@ -32,7 +32,7 @@ class DataRepository {
         return list.subList(index + 1, size + index)
     }
 
-    fun loadPageData(page: Int, size: Int): List<PagBean>? {
+    fun loadPageData(page: Int, size: Int): List<User>? {
         val totalPage = if (list.size % size == 0) {
             list.size / size
         } else {
