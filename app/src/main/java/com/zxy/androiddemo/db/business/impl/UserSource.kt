@@ -10,6 +10,8 @@ import com.zxy.androiddemo.db.entries.User
 interface UserSource {
     fun getUsers(): List<User>
 
+    fun getUserPaging(startIndex: Int, endIndex: Int): List<User>
+
     fun getUsersBySex(sex: String): List<User>
 
     fun getUsersByPhone(phone: String): User

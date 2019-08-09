@@ -4,15 +4,13 @@ import com.zxy.androiddemo.db.business.impl.UserSource
 import com.zxy.androiddemo.db.dao.UserDao
 import com.zxy.androiddemo.db.entries.User
 
-/**
- * @author: zxy
- * @date: 2018/7/11
- * @des:
- */
 class UserSourceImpl(private val userDao: UserDao) : UserSource {
 
     override fun getUsers(): List<User> {
         return userDao.getUsers()
+    }
+    override fun getUserPaging(startIndex: Int, endIndex: Int): List<User> {
+        return userDao.getUsersPaging(startIndex,endIndex)
     }
 
     override fun getUsersBySex(sex: String): List<User> {
@@ -22,7 +20,6 @@ class UserSourceImpl(private val userDao: UserDao) : UserSource {
     override fun getUsersByPhone(phone: String): User {
         return userDao.getUserByPhone(phone)
     }
-
 
     override fun insertUser(user: User) {
         userDao.inserUsers(user)

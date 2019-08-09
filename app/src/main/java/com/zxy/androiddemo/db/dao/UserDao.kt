@@ -1,5 +1,6 @@
 package com.zxy.androiddemo.db.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.zxy.androiddemo.db.entries.User
 
@@ -17,6 +18,12 @@ interface UserDao {
      */
     @Query("select * from users")
     fun getUsers(): List<User>
+
+    /**
+     * 分页查找
+     */
+    @Query("select * from users where uid between :startIndex and :endIndex")
+    fun getUsersPaging(startIndex: Int, endIndex: Int): List<User>
 
     /**
      * 根据性别查找用户

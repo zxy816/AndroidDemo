@@ -2,38 +2,36 @@ package com.zxy.androiddemo.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.adapter.PagingAdapter
-import com.zxy.androiddemo.db.Injection
+import com.zxy.androiddemo.db.DbDataProvider
 import com.zxy.androiddemo.db.business.UserSourceImpl
 import com.zxy.androiddemo.db.entries.Address
 import com.zxy.androiddemo.db.entries.User
-import com.zxy.androiddemo.paging.DataRepository
-import com.zxy.androiddemo.paging.PagingDataSourceFactory
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var userSourceImpl: UserSourceImpl
 
+//    private val userModel by viewModels<UserModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        userSourceImpl = Injection.provideUserDao(this)
-        userSourceImpl.getUsers()
+        userSourceImpl = DbDataProvider.provideUserDao(this)
 //        insetTest()
-        //paging test
+        //paging testls
         var adapter = PagingAdapter()
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
-        val data = LivePagedListBuilder(PagingDataSourceFactory(DataRepository()), PagedList.Config.Builder()
-                .setPageSize(20)
-                .setInitialLoadSizeHint(20)
-                .setEnablePlaceholders(true).build()).build()
+
+//        userModel.users.observe(this, Observer{
+//            adapter.submitList(it)
+//        })
+
     }
 
     fun insetTest() {
