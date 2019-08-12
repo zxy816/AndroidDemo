@@ -2,6 +2,8 @@ package com.zxy.androiddemo.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.zxy.androiddemo.R
@@ -10,17 +12,20 @@ import com.zxy.androiddemo.db.DbDataProvider
 import com.zxy.androiddemo.db.business.UserSourceImpl
 import com.zxy.androiddemo.db.entries.Address
 import com.zxy.androiddemo.db.entries.User
+import com.zxy.androiddemo.viewmodel.UserModel
+import com.zxy.androiddemo.viewmodel.factory.UserModelFactory
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var userSourceImpl: UserSourceImpl
 
-//    private val userModel by viewModels<UserModel>()
+    private lateinit var userModel:UserModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         userSourceImpl = DbDataProvider.provideUserDao(this)
+        userModel = ViewModelProviders.of(this,UserModelFactory(userSourceImpl)).get(UserModel::class.java)
 //        insetTest()
         //paging testls
         var adapter = PagingAdapter()
@@ -31,7 +36,9 @@ class MainActivity : AppCompatActivity() {
 //        userModel.users.observe(this, Observer{
 //            adapter.submitList(it)
 //        })
-
+        userModel.users.observe(this, Observer {
+            adapter.submitList(it)
+        })
     }
 
     fun insetTest() {

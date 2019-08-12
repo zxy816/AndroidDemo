@@ -10,7 +10,7 @@ import com.zxy.androiddemo.viewmodel.UserModel
  * @date: 2019/8/9
  * @des:
  */
-class UserModelFactory(private val userSourceImpl: UserSourceImpl) : ViewModelProvider.NewInstanceFactory() {
+class UserModelFactory(private val userSourceImpl: UserSourceImpl) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return UserModel(userSourceImpl) as T

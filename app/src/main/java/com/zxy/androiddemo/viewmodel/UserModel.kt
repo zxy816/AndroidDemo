@@ -18,7 +18,7 @@ class UserModel constructor(userSourceImpl: UserSourceImpl) : ViewModel() {
             //分页加载的数量
             .setPageSize(20)
             //预加载的数量
-            .setInitialLoadSizeHint(10)
+            .setInitialLoadSizeHint(20)
             .setEnablePlaceholders(true).build()
     ).build()
 }
