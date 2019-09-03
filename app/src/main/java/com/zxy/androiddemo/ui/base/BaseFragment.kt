@@ -25,8 +25,4 @@ abstract class BaseFragment : Fragment() {
         return inflater.inflate(getLayout(),container,false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
-
 }

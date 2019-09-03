@@ -25,13 +25,15 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        fun getInstance(context: Context): AppDatabase? {
+        fun getInstance(context: Context?): AppDatabase? {
             if (INSTANCE == null) {
                 synchronized(AppDatabase::class.java) {
                     if (INSTANCE == null) {
-                        INSTANCE = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "demo.db")
-                                //.addMigrations(MIGRATION_1_2)
-                                .allowMainThreadQueries().build()
+                        if (context != null) {
+                            INSTANCE = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "demo.db")
+                                    //.addMigrations(MIGRATION_1_2)
+                                    .allowMainThreadQueries().build()
+                        }
                     }
                 }
             }

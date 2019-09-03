@@ -33,7 +33,4 @@ class WelcomeFragment : BaseFragment() {
 
         }
     }
-
-
-
 }
