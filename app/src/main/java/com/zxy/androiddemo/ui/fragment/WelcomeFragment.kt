@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.Navigation
 
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.ui.base.BaseFragment
@@ -29,8 +30,7 @@ class WelcomeFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(WelcomeViewModel::class.java)
         button.setOnClickListener {
-            Toast.makeText(activity,"welcome",Toast.LENGTH_SHORT).show()
-
+            Navigation.findNavController(it).navigate(R.id.action_welcomeFragment_to_loginFragment)
         }
     }
 }

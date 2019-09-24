@@ -25,10 +25,11 @@ class PagingFragment : BaseFragment() {
     companion object {
         fun newInstance() = PagingFragment()
     }
+
     private lateinit var userSourceImpl: UserSourceImpl
 
     private lateinit var viewModel: PagingViewModel
-    private lateinit var userModel:UserModel
+    private lateinit var userModel: UserModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +38,7 @@ class PagingFragment : BaseFragment() {
     }
 
     override fun getLayout(): Int {
-      return R.layout.fragment_paging
+        return R.layout.fragment_paging
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -57,7 +58,7 @@ class PagingFragment : BaseFragment() {
     }
 
     fun insetTest() {
-        for (i in 1..50){
+        for (i in 1..50) {
             val user = User()
             user.userName = "张 -- $i"
             user.pwd = "123456"
