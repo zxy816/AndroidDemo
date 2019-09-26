@@ -2,11 +2,6 @@ package com.zxy.androiddemo.ui.fragment
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.Navigation
 
 import com.zxy.androiddemo.R
@@ -20,7 +15,7 @@ class WelcomeFragment : BaseFragment() {
         fun newInstance() = WelcomeFragment()
     }
 
-    private lateinit var viewModel: WelcomeViewModel
+    private lateinit var welcomeModel: WelcomeViewModel
 
     override fun getLayout(): Int {
         return R.layout.fragment_welcome
@@ -28,7 +23,12 @@ class WelcomeFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(WelcomeViewModel::class.java)
+        welcomeModel = ViewModelProviders.of(this).get(WelcomeViewModel::class.java)
+        mainActivity.setToolbar(false,"")
+        clickListener()
+    }
+
+    private fun clickListener() {
         button.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_welcomeFragment_to_loginFragment)
         }

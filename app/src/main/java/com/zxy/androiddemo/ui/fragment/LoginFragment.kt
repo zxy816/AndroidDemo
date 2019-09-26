@@ -1,13 +1,8 @@
 package com.zxy.androiddemo.ui.fragment
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
-
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.ui.base.BaseFragment
 import com.zxy.androiddemo.viewmodel.fragment.LoginViewModel
@@ -15,11 +10,11 @@ import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : BaseFragment() {
 
+    private lateinit var viewModel: LoginViewModel
+
     companion object {
         fun newInstance() = LoginFragment()
     }
-
-    private lateinit var viewModel: LoginViewModel
 
     override fun getLayout(): Int {
         return R.layout.fragment_login
@@ -28,6 +23,7 @@ class LoginFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        mainActivity.setToolbar(true, "登录")
         setOnClickListener()
     }
 
@@ -35,5 +31,10 @@ class LoginFragment : BaseFragment() {
         btn_login.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_pagingFragment)
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mainActivity.setToolbar(true, "")
     }
 }
