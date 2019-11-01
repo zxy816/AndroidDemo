@@ -3,7 +3,6 @@ package com.zxy.androiddemo.ui
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation
 import com.zxy.androiddemo.R
 import kotlinx.android.synthetic.main.toolbar_base.*
 
@@ -14,14 +13,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun setToolbar(isShow: Boolean, str: String) {
-        if (isShow){
-            toolbar.visibility = View.VISIBLE
-        } else{
-            toolbar.visibility = View.GONE
-        }
-        toolbarTitle.text = str
+    fun setToolbar(isShow:Boolean, back:Boolean = false, title:String = ""){
+        toolbar.visibility  = if (isShow) View.VISIBLE else View.GONE
+        toolbarBack.visibility = if (back) View.VISIBLE else View.GONE
+        toolbarTitle.text = title
         toolbarBack.setOnClickListener {
+            onBackPressed()
         }
     }
+
 }

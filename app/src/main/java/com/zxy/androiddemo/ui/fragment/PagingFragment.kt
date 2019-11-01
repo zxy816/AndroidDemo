@@ -2,9 +2,14 @@ package com.zxy.androiddemo.ui.fragment
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.adapter.PagingAdapter
 import com.zxy.androiddemo.db.DbDataProvider
@@ -15,6 +20,7 @@ import com.zxy.androiddemo.ui.base.BaseFragment
 import com.zxy.androiddemo.viewmodel.UserModel
 import com.zxy.androiddemo.viewmodel.factory.UserModelFactory
 import com.zxy.androiddemo.viewmodel.fragment.PagingViewModel
+import kotlinx.android.synthetic.main.fragment_paging.*
 
 class PagingFragment : BaseFragment() {
     companion object {
@@ -39,11 +45,10 @@ class PagingFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(PagingViewModel::class.java)
-
+        mainActivity.setToolbar(isShow = true, back = true, title = "分页")
 //        insetTest()
         //paging test
         var adapter = PagingAdapter()
-        val recyclerView = activity!!.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
 

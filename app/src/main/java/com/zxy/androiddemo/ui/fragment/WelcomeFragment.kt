@@ -1,9 +1,8 @@
 package com.zxy.androiddemo.ui.fragment
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
-
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.ui.base.BaseFragment
 import com.zxy.androiddemo.viewmodel.fragment.WelcomeViewModel
@@ -24,7 +23,7 @@ class WelcomeFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         welcomeModel = ViewModelProviders.of(this).get(WelcomeViewModel::class.java)
-        mainActivity.setToolbar(false,"")
+        mainActivity.setToolbar(isShow = false)
         clickListener()
     }
 

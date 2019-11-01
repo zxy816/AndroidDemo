@@ -1,6 +1,7 @@
 package com.zxy.androiddemo.ui.fragment
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.zxy.androiddemo.R
@@ -23,7 +24,7 @@ class LoginFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-        mainActivity.setToolbar(true, "登录")
+        mainActivity.setToolbar(isShow = true, title = "登录")
         setOnClickListener()
     }
 
@@ -31,10 +32,5 @@ class LoginFragment : BaseFragment() {
         btn_login.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_pagingFragment)
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        mainActivity.setToolbar(true, "")
     }
 }
