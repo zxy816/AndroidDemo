@@ -39,7 +39,7 @@ class LoginFragment : BaseFragment() {
             Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_pagingFragment)
         }
         btn_register.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_welcomeFragment_to_registFragment)
+            Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_registFragment)
         }
     }
 }

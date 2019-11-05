@@ -30,6 +30,7 @@ class RegistFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(RegistViewModel::class.java)
+        mainActivity.setToolbar(isShow = true, title = "注册")
     }
 
 }
