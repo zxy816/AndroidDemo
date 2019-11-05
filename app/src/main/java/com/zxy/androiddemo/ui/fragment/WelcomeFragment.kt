@@ -1,6 +1,9 @@
 package com.zxy.androiddemo.ui.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.zxy.androiddemo.R
@@ -16,8 +19,8 @@ class WelcomeFragment : BaseFragment() {
 
     private lateinit var welcomeModel: WelcomeViewModel
 
-    override fun getLayout(): Int {
-        return R.layout.fragment_welcome
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_welcome, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

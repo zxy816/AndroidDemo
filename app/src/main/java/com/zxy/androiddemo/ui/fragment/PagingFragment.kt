@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.adapter.PagingAdapter
+import com.zxy.androiddemo.databinding.FragmentLoginBinding
+import com.zxy.androiddemo.databinding.FragmentPagingBinding
 import com.zxy.androiddemo.db.DbDataProvider
 import com.zxy.androiddemo.db.business.UserSourceImpl
 import com.zxy.androiddemo.db.entries.Address
@@ -31,6 +31,7 @@ class PagingFragment : BaseFragment() {
 
     private lateinit var viewModel: PagingViewModel
     private lateinit var userModel: UserModel
+    private lateinit var pagingBinding: FragmentPagingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +39,9 @@ class PagingFragment : BaseFragment() {
         userModel = ViewModelProviders.of(this, UserModelFactory(userSourceImpl)).get(UserModel::class.java)
     }
 
-    override fun getLayout(): Int {
-        return R.layout.fragment_paging
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        pagingBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_paging, container, false)
+        return pagingBinding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
