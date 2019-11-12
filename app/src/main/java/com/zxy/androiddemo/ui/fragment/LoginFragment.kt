@@ -30,7 +30,7 @@ class LoginFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-        mainActivity.setToolbar(isShow = true, title = "登录")
+        mainActivity.setToolbar(isShow = false)
         setOnClickListener()
     }
 
@@ -40,6 +40,9 @@ class LoginFragment : BaseFragment() {
         }
         btn_register.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_registFragment)
+        }
+        tv_forgetPwd.setOnClickListener {
+            showToast("好好想下!")
         }
     }
 }
