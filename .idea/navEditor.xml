@@ -24,6 +24,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_loginFragment_to_registFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -74,11 +79,6 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_welcomeFragment_to_loginFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_welcomeFragment_to_registFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

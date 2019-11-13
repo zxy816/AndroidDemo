@@ -32,9 +32,7 @@ class RegistFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         userSourceImpl = DbDataProvider.provideUserDao(activity)
-//        userModel = ViewModelProviders.of(this, UserModelFactory(userSourceImpl)).get(UserModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -46,20 +44,13 @@ class RegistFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(RegistViewModel::class.java)
         mainActivity.setToolbar(isShow = true, back = true, title = "注册")
+        setOnClickListener()
+    }
+
+    private fun setOnClickListener() {
         btn_register.setOnClickListener {
-            val user = User()
-            user.userName = "zxy"
-            user.pwd = "123456"
-            user.sex = "男"
-            user.age = 30
-            user.phone = "18792430923"
-            val address = Address()
-            address.province = "陕西省"
-            address.city = "西安市"
-            address.county = "雁塔区"
-            address.street = "电子城街道"
-            user.address = address
-            userSourceImpl?.insertUser(user)
+            val userName = registBinding.etUserName.text.toString()
+           viewModel.registerUserDB()
         }
     }
 }

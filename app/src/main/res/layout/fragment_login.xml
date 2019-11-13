@@ -100,9 +100,8 @@
             android:layout_marginRight="8dp"
             android:text="忘记密码?"
             android:textColor="@color/colorPrimaryDark"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_register"
-            app:layout_constraintEnd_toEndOf="@+id/btn_login"
-            app:layout_constraintTop_toTopOf="@+id/btn_register" />
+            app:layout_constraintBaseline_toBaselineOf="@id/btn_register"
+            app:layout_constraintEnd_toEndOf="@+id/btn_login"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.zxy.androiddemo.R
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_base.*
 
 class MainActivity : AppCompatActivity() {

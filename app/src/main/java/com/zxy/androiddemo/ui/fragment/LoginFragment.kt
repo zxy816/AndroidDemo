@@ -9,7 +9,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.databinding.FragmentLoginBinding
+import com.zxy.androiddemo.db.DbDataProvider
+import com.zxy.androiddemo.db.business.UserSourceImpl
 import com.zxy.androiddemo.ui.base.BaseFragment
+import com.zxy.androiddemo.viewmodel.UserModel
+import com.zxy.androiddemo.viewmodel.factory.UserModelFactory
 import com.zxy.androiddemo.viewmodel.fragment.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 
@@ -18,8 +22,17 @@ class LoginFragment : BaseFragment() {
     private lateinit var viewModel: LoginViewModel
     private lateinit var loginBinding: FragmentLoginBinding
 
+    private lateinit var userSourceImpl: UserSourceImpl
+    private lateinit var userModel:UserModel
+
     companion object {
         fun newInstance() = LoginFragment()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        userSourceImpl = DbDataProvider.provideUserDao(activity)
+        userModel = ViewModelProviders.of(this, UserModelFactory(userSourceImpl)).get(UserModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
