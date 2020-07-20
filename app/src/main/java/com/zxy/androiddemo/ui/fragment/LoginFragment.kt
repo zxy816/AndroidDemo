@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.databinding.FragmentLoginBinding
@@ -25,14 +25,10 @@ class LoginFragment : BaseFragment() {
     private lateinit var userSourceImpl: UserSourceImpl
     private lateinit var userModel:UserModel
 
-    companion object {
-        fun newInstance() = LoginFragment()
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         userSourceImpl = DbDataProvider.provideUserDao(activity)
-        userModel = ViewModelProviders.of(this, UserModelFactory(userSourceImpl)).get(UserModel::class.java)
+        userModel = ViewModelProvider(this, UserModelFactory(userSourceImpl)).get(UserModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -42,7 +38,7 @@ class LoginFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         mainActivity.setToolbar(isShow = false)
         setOnClickListener()
     }

@@ -21,6 +21,8 @@ abstract class BaseFragment : Fragment() {
         mainActivity = activity as MainActivity
     }
 
+
+
     fun showToast(msg: String) {
         Toast.makeText(mainActivity, msg, Toast.LENGTH_SHORT).show()
     }

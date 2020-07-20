@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.zxy.androiddemo.R
@@ -13,10 +14,6 @@ import kotlinx.android.synthetic.main.fragment_welcome.*
 
 class WelcomeFragment : BaseFragment() {
 
-    companion object {
-        fun newInstance() = WelcomeFragment()
-    }
-
     private lateinit var welcomeModel: WelcomeViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -25,7 +22,7 @@ class WelcomeFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        welcomeModel = ViewModelProviders.of(this).get(WelcomeViewModel::class.java)
+        welcomeModel = ViewModelProvider(this).get(WelcomeViewModel::class.java)
         mainActivity.setToolbar(isShow = false)
         clickListener()
     }

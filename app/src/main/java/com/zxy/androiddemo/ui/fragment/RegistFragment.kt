@@ -5,26 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.databinding.FragmentRegistBinding
 import com.zxy.androiddemo.db.DbDataProvider
 import com.zxy.androiddemo.db.business.UserSourceImpl
-import com.zxy.androiddemo.db.entries.Address
-import com.zxy.androiddemo.db.entries.User
 import com.zxy.androiddemo.ui.base.BaseFragment
-import com.zxy.androiddemo.viewmodel.UserModel
-import com.zxy.androiddemo.viewmodel.factory.UserModelFactory
 import com.zxy.androiddemo.viewmodel.fragment.RegistViewModel
 import kotlinx.android.synthetic.main.fragment_regist.*
 
 class RegistFragment : BaseFragment() {
-
-    companion object {
-        fun newInstance() = RegistFragment()
-    }
-
     private lateinit var userSourceImpl: UserSourceImpl
 
     private lateinit var viewModel: RegistViewModel
@@ -42,7 +32,7 @@ class RegistFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(RegistViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(RegistViewModel::class.java)
         mainActivity.setToolbar(isShow = true, back = true, title = "注册")
         setOnClickListener()
     }

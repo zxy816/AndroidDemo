@@ -1,6 +1,5 @@
 package com.zxy.androiddemo.db.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.zxy.androiddemo.db.entries.User
 
