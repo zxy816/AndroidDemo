@@ -8,21 +8,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.databinding.FragmentRegistBinding
-import com.zxy.androiddemo.db.DbDataProvider
-import com.zxy.androiddemo.db.business.UserSourceImpl
+import com.zxy.androiddemo.db.RepositoryFactory
 import com.zxy.androiddemo.ui.base.BaseFragment
-import com.zxy.androiddemo.viewmodel.fragment.RegistViewModel
+import com.zxy.androiddemo.viewmodel.RegistViewModel
 import kotlinx.android.synthetic.main.fragment_regist.*
 
 class RegistFragment : BaseFragment() {
-    private lateinit var userSourceImpl: UserSourceImpl
-
     private lateinit var viewModel: RegistViewModel
     private lateinit var registBinding: FragmentRegistBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        userSourceImpl = DbDataProvider.provideUserDao(activity)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

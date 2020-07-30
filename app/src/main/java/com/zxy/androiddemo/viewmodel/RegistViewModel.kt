@@ -1,4 +1,4 @@
-package com.zxy.androiddemo.viewmodel.fragment
+package com.zxy.androiddemo.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.zxy.androiddemo.db.entries.Address

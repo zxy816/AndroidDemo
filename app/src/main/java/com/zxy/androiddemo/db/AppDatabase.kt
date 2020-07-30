@@ -23,21 +23,21 @@ abstract class AppDatabase : RoomDatabase() {
     companion object {
 
         @Volatile
-        private var INSTANCE: AppDatabase? = null
+        private var instance: AppDatabase? = null
 
         fun getInstance(context: Context?): AppDatabase? {
-            if (INSTANCE == null) {
+            if (instance == null) {
                 synchronized(AppDatabase::class.java) {
-                    if (INSTANCE == null) {
+                    if (instance == null) {
                         if (context != null) {
-                            INSTANCE = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "demo.db")
+                            instance = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "demo.db")
                                     //.addMigrations(MIGRATION_1_2)
                                     .allowMainThreadQueries().build()
                         }
                     }
                 }
             }
-            return INSTANCE
+            return instance
         }
 
         internal val MIGRATION_1_2: Migration = object : Migration(1, 2) {

@@ -1,7 +1,6 @@
 package com.zxy.androiddemo.paging
 
 import androidx.paging.DataSource
-import com.zxy.androiddemo.db.business.UserSourceImpl
 
 import com.zxy.androiddemo.db.entries.User
 
