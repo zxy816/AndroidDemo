@@ -21,11 +21,9 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
     companion object {
-
-        @Volatile
         private var instance: AppDatabase? = null
-
-        fun getInstance(context: Context?): AppDatabase? {
+        @Synchronized
+        fun getInstance(context: Context): AppDatabase? {
             if (instance == null) {
                 synchronized(AppDatabase::class.java) {
                     if (instance == null) {

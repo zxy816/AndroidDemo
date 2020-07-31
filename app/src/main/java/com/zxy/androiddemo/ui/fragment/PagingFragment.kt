@@ -36,8 +36,5 @@ class PagingFragment : BaseFragment() {
         var adapter = PagingAdapter()
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
-
-
     }
-
 }

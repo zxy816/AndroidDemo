@@ -19,7 +19,6 @@ class RegistViewModel : ViewModel() {
         address.county = "雁塔区"
         address.street = "电子城街道"
         user.address = address
-//        userSourceImpl?.insertUser(user)
     }
 
 }

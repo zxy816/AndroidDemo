@@ -1,5 +1,6 @@
 package com.zxy.androiddemo.db.dao
 
+import androidx.paging.PagingSource
 import androidx.room.*
 import com.zxy.androiddemo.db.entries.User
 
@@ -16,7 +17,7 @@ interface UserDao {
      * @return
      */
     @Query("select * from users")
-    fun getUsers(): List<User>
+    fun getUsers(): PagingSource<Int, User>
 
     /**
      * 分页查找
