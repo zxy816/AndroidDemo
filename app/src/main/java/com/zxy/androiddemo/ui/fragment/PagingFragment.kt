@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zxy.androiddemo.R
@@ -36,5 +37,9 @@ class PagingFragment : BaseFragment() {
         var adapter = PagingAdapter()
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
+
+        viewModel.getUsers.observe(viewLifecycleOwner, Observer { data ->
+            adapter.submitData(lifecycle, data)
+        })
     }
 }

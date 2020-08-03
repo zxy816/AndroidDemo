@@ -16,7 +16,7 @@ class UserRepositoryImpl(val db: AppDatabase, val pageConfig: PagingConfig) : Us
 
     private val userDao by lazy { db.userDao() }
 
-    override fun insertUser(user: User) {
+    override fun insertUser(user: User){
         userDao.inserUsers(user)
     }
 

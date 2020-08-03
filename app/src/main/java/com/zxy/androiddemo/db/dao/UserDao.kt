@@ -12,18 +12,12 @@ import com.zxy.androiddemo.db.entries.User
 @Dao
 interface UserDao {
     /**
-     * 查找所有的用户
+     * 分页查找所有的用户
      *
      * @return
      */
     @Query("select * from users")
     fun getUsers(): PagingSource<Int, User>
-
-    /**
-     * 分页查找
-     */
-    @Query("select * from users where uid between :startIndex and :endIndex")
-    fun getUsersPaging(startIndex: Int, endIndex: Int): List<User>
 
     /**
      * 根据性别查找用户

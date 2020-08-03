@@ -2,6 +2,7 @@ package com.zxy.androiddemo.adapter
 
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.zxy.androiddemo.db.entries.User
 
@@ -10,7 +11,7 @@ import com.zxy.androiddemo.db.entries.User
  * @date: 2018/7/12
  * @des:
  */
-class PagingAdapter : PagedListAdapter<User, PagingViewHolder>(callback) {
+class PagingAdapter : PagingDataAdapter<User, PagingViewHolder>(callback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagingViewHolder {
         return PagingViewHolder(parent)
     }
