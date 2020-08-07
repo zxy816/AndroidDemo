@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,10 +16,11 @@ import com.zxy.androiddemo.databinding.FragmentPagingBinding
 import com.zxy.androiddemo.ui.base.BaseFragment
 import com.zxy.androiddemo.viewmodel.PagingViewModel
 import kotlinx.android.synthetic.main.fragment_paging.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PagingFragment : BaseFragment() {
 
-    private lateinit var viewModel: PagingViewModel
+    private val viewModel : PagingViewModel by activityViewModels()
     private lateinit var pagingBinding: FragmentPagingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +34,6 @@ class PagingFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PagingViewModel::class.java)
         mainActivity.setToolbar(isShow = true, back = true, title = "分页")
         //paging test
         var adapter = PagingAdapter()
