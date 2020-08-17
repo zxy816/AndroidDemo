@@ -16,7 +16,6 @@ import com.zxy.androiddemo.databinding.FragmentPagingBinding
 import com.zxy.androiddemo.ui.base.BaseFragment
 import com.zxy.androiddemo.viewmodel.PagingViewModel
 import kotlinx.android.synthetic.main.fragment_paging.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PagingFragment : BaseFragment() {
 

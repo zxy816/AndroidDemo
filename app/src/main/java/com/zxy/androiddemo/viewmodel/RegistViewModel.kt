@@ -1,14 +1,14 @@
 package com.zxy.androiddemo.viewmodel
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
-import com.zxy.androiddemo.db.RepositoryFactory
 import com.zxy.androiddemo.db.business.UserRepository
 import com.zxy.androiddemo.db.entries.Address
 import com.zxy.androiddemo.db.entries.User
 
-class RegistViewModel(val userRepository: UserRepository) : ViewModel() {
+class RegistViewModel @ViewModelInject constructor(val userRepository: UserRepository) : ViewModel() {
 
-    fun registerUserDB(){
+    fun registerUserDB() {
         val user = User()
         user.userName = "zxy"
         user.pwd = "123456"

@@ -7,9 +7,9 @@ import com.zxy.androiddemo.db.business.UserRepositoryImpl
 /**
  * 数据 储存库工厂
  */
-class RepositoryFactory(val appDatabase: AppDatabase) {
+object RepositoryFactory{
 
-    fun makeUserRepository(): UserRepository = UserRepositoryImpl(appDatabase, pagingConfig)
+    fun makeUserRepository(appDatabase: AppDatabase): UserRepository = UserRepositoryImpl(appDatabase, pagingConfig)
 
     val pagingConfig = PagingConfig(
             // 每页显示的数据的大小
