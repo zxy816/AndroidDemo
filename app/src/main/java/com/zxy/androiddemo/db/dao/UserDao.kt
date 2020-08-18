@@ -43,8 +43,8 @@ interface UserDao {
      * @param user
      * @return
      */
-    @Insert
-    fun inserUsers(user: User): Long
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun inserUsers(user: User)
 
     /**
      * 更新用户

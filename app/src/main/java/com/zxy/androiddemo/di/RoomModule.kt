@@ -20,30 +20,34 @@ import javax.inject.Singleton
  * @date: 2020/8/17
  * @des:
  */
-@Module
 @InstallIn(ApplicationComponent::class)
+@Module
 object RoomModule {
     @Provides
     @Singleton
     fun provideAppDataBase(application: Application): AppDatabase {
+        println("========provideAppDataBase")
         return Room.databaseBuilder(application, AppDatabase::class.java, "demo.db")
-                .addCallback(object :RoomDatabase.Callback(){
-                    override fun onCreate(db: SupportSQLiteDatabase) {
-                        super.onCreate(db)
-//                        initUsersDataBase()
-                    }
-                })
-                //.addMigrations(MIGRATION_1_2)
+                .addCallback(callback)
+                .addMigrations(MIGRATION_1_2)
                 .allowMainThreadQueries()
                 .build()
     }
 
     @Provides
     @Singleton
-    fun providerPokemonDao(appDataBase: AppDatabase): UserDao {
+    fun provideUserDao(appDataBase: AppDatabase): UserDao {
+        println("===========provideUserDao")
         return appDataBase.userDao()
     }
 
+    val callback: RoomDatabase.Callback = object : RoomDatabase.Callback() {
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            super.onCreate(db)
+            initUsersDataBase(db)
+            println("========callback---onCreate()")
+        }
+    }
 
     internal val MIGRATION_1_2: Migration = object : Migration(1, 2) {
         override fun migrate(database: SupportSQLiteDatabase) {
@@ -51,7 +55,7 @@ object RoomModule {
         }
     }
 
-    fun initUsersDataBase(appDataBase: AppDatabase) {
+    fun initUsersDataBase(db: SupportSQLiteDatabase) {
         doAsync {
             for (i in 0..100) {
                 val user = User()
@@ -59,7 +63,6 @@ object RoomModule {
                 user.pwd = "123456"
                 if (i % 2 == 0) user.sex = "男" else "女"
                 user.age = i
-                providerPokemonDao(appDataBase).inserUsers(user)
             }
         }
     }

@@ -1,7 +1,6 @@
 package com.zxy.androiddemo.app
 
 import android.app.Application
-import androidx.multidex.MultiDex
 import dagger.hilt.android.HiltAndroidApp
 
 
@@ -13,8 +12,4 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class DemoApp : Application() {
 
-    override fun onCreate() {
-        super.onCreate()
-        MultiDex.install(this)
-    }
 }

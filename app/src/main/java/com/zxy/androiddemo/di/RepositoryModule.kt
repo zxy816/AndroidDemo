@@ -1,8 +1,8 @@
 package com.zxy.androiddemo.di
 
-import com.zxy.androiddemo.db.AppDatabase
 import com.zxy.androiddemo.db.RepositoryFactory
 import com.zxy.androiddemo.db.business.UserRepository
+import com.zxy.androiddemo.db.dao.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +19,7 @@ import javax.inject.Singleton
 object RepositoryModule {
     @Singleton
     @Provides
-    fun provideRepository(appDatabase: AppDatabase): UserRepository {
-        return RepositoryFactory.makeUserRepository(appDatabase)
+    fun provideRepository(userDao: UserDao): UserRepository {
+        return RepositoryFactory.makeUserRepository(userDao)
     }
 }

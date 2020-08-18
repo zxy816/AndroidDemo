@@ -3,7 +3,7 @@ package com.zxy.androiddemo.db.business
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.zxy.androiddemo.db.AppDatabase
+import com.zxy.androiddemo.db.dao.UserDao
 import com.zxy.androiddemo.db.entries.User
 import kotlinx.coroutines.flow.Flow
 
@@ -12,11 +12,9 @@ import kotlinx.coroutines.flow.Flow
  * @date: 2020/7/31
  * @des:
  */
-class UserRepositoryImpl(val db: AppDatabase, val pageConfig: PagingConfig) : UserRepository {
+class UserRepositoryImpl(val userDao: UserDao, val pageConfig: PagingConfig) : UserRepository {
 
-    private val userDao by lazy { db.userDao() }
-
-    override fun insertUser(user: User){
+    override fun insertUser(user: User) {
         userDao.inserUsers(user)
     }
 

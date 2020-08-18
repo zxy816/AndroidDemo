@@ -10,7 +10,7 @@ import com.zxy.androiddemo.db.entries.User
  * @date: 2018/7/11
  * @des:
  */
-@Database(entities = arrayOf(User::class), version = 1)
+@Database(entities = [User::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 }

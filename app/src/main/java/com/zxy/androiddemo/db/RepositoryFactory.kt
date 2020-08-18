@@ -3,13 +3,14 @@ package com.zxy.androiddemo.db
 import androidx.paging.PagingConfig
 import com.zxy.androiddemo.db.business.UserRepository
 import com.zxy.androiddemo.db.business.UserRepositoryImpl
+import com.zxy.androiddemo.db.dao.UserDao
 
 /**
  * 数据 储存库工厂
  */
-object RepositoryFactory{
+object RepositoryFactory {
 
-    fun makeUserRepository(appDatabase: AppDatabase): UserRepository = UserRepositoryImpl(appDatabase, pagingConfig)
+    fun makeUserRepository(userDao: UserDao): UserRepository = UserRepositoryImpl(userDao, pagingConfig)
 
     val pagingConfig = PagingConfig(
             // 每页显示的数据的大小
