@@ -7,12 +7,10 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.zxy.androiddemo.db.AppDatabase
 import com.zxy.androiddemo.db.dao.UserDao
-import com.zxy.androiddemo.db.entries.User
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
-import org.jetbrains.anko.doAsync
 import javax.inject.Singleton
 
 /**
@@ -41,29 +39,16 @@ object RoomModule {
         return appDataBase.userDao()
     }
 
-    val callback: RoomDatabase.Callback = object : RoomDatabase.Callback() {
+    private val callback: RoomDatabase.Callback = object : RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
-            initUsersDataBase(db)
             println("========callback---onCreate()")
         }
     }
 
-    internal val MIGRATION_1_2: Migration = object : Migration(1, 2) {
+    private val MIGRATION_1_2: Migration = object : Migration(1, 2) {
         override fun migrate(database: SupportSQLiteDatabase) {
             database.execSQL("")
-        }
-    }
-
-    fun initUsersDataBase(db: SupportSQLiteDatabase) {
-        doAsync {
-            for (i in 0..100) {
-                val user = User()
-                user.userName = "zxy$i"
-                user.pwd = "123456"
-                if (i % 2 == 0) user.sex = "男" else "女"
-                user.age = i
-            }
         }
     }
 }

@@ -16,12 +16,12 @@ class PagingViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_paging_recyclerview, parent, false)
 ) {
     private val nameView = itemView.findViewById<TextView>(R.id.name)
-    private val codeView = itemView.findViewById<TextView>(R.id.code)
+    private val sexView = itemView.findViewById<TextView>(R.id.sex)
     var user: User? = null
 
     fun bindTo(user: User?) {
         this.user = user
         nameView.text = user?.userName
-        codeView.text = user?.address?.province
+        sexView.text = user?.sex
     }
 }

@@ -1,7 +1,6 @@
 package com.zxy.androiddemo.adapter
 
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.zxy.androiddemo.db.entries.User
@@ -11,7 +10,7 @@ import com.zxy.androiddemo.db.entries.User
  * @date: 2018/7/12
  * @des:
  */
-class PagingAdapter : PagingDataAdapter<User, PagingViewHolder>(callback) {
+class PagingAdapter : PagingDataAdapter<User, PagingViewHolder>(diffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagingViewHolder {
         return PagingViewHolder(parent)
     }
@@ -21,11 +20,15 @@ class PagingAdapter : PagingDataAdapter<User, PagingViewHolder>(callback) {
     }
 
     companion object {
-        var callback = object : DiffUtil.ItemCallback<User>() {
+        private val diffCallback = object : DiffUtil.ItemCallback<User>() {
 
-            override fun areItemsTheSame(oldItem: User, newItem: User): Boolean = oldItem.uid == newItem.uid
+            override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
+                return oldItem.uid == newItem.uid
+            }
 
-            override fun areContentsTheSame(oldItem: User, newItem: User): Boolean = oldItem == newItem
+            override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
+                return newItem == oldItem
+            }
         }
     }
 }

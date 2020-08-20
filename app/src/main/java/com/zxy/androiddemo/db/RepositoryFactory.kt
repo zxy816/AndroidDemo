@@ -22,6 +22,6 @@ object RepositoryFactory {
             // 初始化加载数量，默认为 pageSize * 3
             initialLoadSize = 60,
             //内存中保存的最大数据.超过滑动加载更多的数据
-            maxSize = 100
+            maxSize = 200
     )
 }
