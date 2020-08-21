@@ -1,4 +1,4 @@
-package com.zxy.androiddemo.adapter
+package com.zxy.androiddemo.ui.adapter
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter

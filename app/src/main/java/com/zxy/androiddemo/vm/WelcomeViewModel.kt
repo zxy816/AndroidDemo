@@ -1,4 +1,4 @@
-package com.zxy.androiddemo.viewmodel
+package com.zxy.androiddemo.vm
 
 import androidx.lifecycle.ViewModel
 

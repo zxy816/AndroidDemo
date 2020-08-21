@@ -1,4 +1,4 @@
-package com.zxy.androiddemo.db.business
+package com.zxy.androiddemo.data
 
 import androidx.paging.PagingData
 import com.zxy.androiddemo.db.entries.User
@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
  * @date: 2020/7/31
  * @des:
  */
-interface UserRepository {
+interface DaoRepository {
 
     fun insertUser(user: User)
 

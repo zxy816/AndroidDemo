@@ -10,7 +10,7 @@ import androidx.navigation.Navigation
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.databinding.FragmentLoginBinding
 import com.zxy.androiddemo.ui.base.BaseFragment
-import com.zxy.androiddemo.viewmodel.LoginViewModel
+import com.zxy.androiddemo.vm.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : BaseFragment() {

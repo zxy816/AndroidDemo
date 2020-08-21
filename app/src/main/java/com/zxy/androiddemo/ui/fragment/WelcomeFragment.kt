@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.ui.base.BaseFragment
-import com.zxy.androiddemo.viewmodel.WelcomeViewModel
+import com.zxy.androiddemo.vm.WelcomeViewModel
 import kotlinx.android.synthetic.main.fragment_welcome.*
 
 class WelcomeFragment : BaseFragment() {

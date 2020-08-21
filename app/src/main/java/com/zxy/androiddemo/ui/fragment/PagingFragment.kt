@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zxy.androiddemo.R
-import com.zxy.androiddemo.adapter.PagingAdapter
+import com.zxy.androiddemo.ui.adapter.PagingAdapter
 import com.zxy.androiddemo.databinding.FragmentPagingBinding
 import com.zxy.androiddemo.ui.base.BaseFragment
-import com.zxy.androiddemo.viewmodel.PagingViewModel
+import com.zxy.androiddemo.vm.PagingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_paging.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -36,13 +35,16 @@ class PagingFragment : BaseFragment() {
         return pagingBinding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         mainActivity.setToolbar(isShow = true, back = true, title = "分页")
         //paging test
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
+    }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         lifecycleScope.launch {
             @OptIn(ExperimentalCoroutinesApi::class)
             viewModel.getUsers.collectLatest {

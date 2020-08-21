@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.databinding.FragmentRegistBinding
 import com.zxy.androiddemo.ui.base.BaseFragment
-import com.zxy.androiddemo.viewmodel.RegistViewModel
+import com.zxy.androiddemo.vm.RegistViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_regist.*
 

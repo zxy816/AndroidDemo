@@ -1,13 +1,13 @@
-package com.zxy.androiddemo.viewmodel
+package com.zxy.androiddemo.vm
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
-import com.zxy.androiddemo.db.business.UserRepository
+import com.zxy.androiddemo.data.DaoRepository
 import com.zxy.androiddemo.db.entries.Address
 import com.zxy.androiddemo.db.entries.User
 import org.jetbrains.anko.doAsync
 
-class RegistViewModel @ViewModelInject constructor(val userRepository: UserRepository) : ViewModel() {
+class RegistViewModel @ViewModelInject constructor(val userRepository: DaoRepository) : ViewModel() {
 
     fun registerUserDB() {
         doAsync {
