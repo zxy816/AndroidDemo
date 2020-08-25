@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.zxy.androiddemo">
 
     <application
@@ -17,6 +18,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- startup 库应用，除meta-data的value值不得修改-->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="com.zxy.androiddemo.app.DemoInitializer"
+                android:value="androidx.startup" />
+        </provider>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
