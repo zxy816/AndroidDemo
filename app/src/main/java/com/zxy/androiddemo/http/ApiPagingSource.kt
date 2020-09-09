@@ -12,9 +12,9 @@ import java.lang.Exception
 class ApiPagingSource(val api: ApiService) : PagingSource<Int, User>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, User> {
         return try {
-            val key = params.key ?: 0
+            val nextPageNumber = params.key ?: 0
             // 获取网络数据
-            val items = api.getTestData(key, params.loadSize)
+            val items = api.getTestData(ApiLoader.getPagingData(nextPageNumber))
             // 请求成功，构造一个 LoadResult.Page 返回
             LoadResult.Page(
                     data = items,// 返回获取到的数据
