@@ -1,7 +1,7 @@
 package com.zxy.androiddemo.data
 
 import androidx.paging.PagingData
-import com.zxy.androiddemo.db.entries.User
+import com.zxy.androiddemo.bean.PagingBean
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -11,5 +11,5 @@ import kotlinx.coroutines.flow.Flow
  */
 interface ApiRepository {
 
-    fun getServiceUser(): Flow<PagingData<User>>
+    fun getServiceUser(): Flow<PagingData<PagingBean>>
 }

@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
  * @date: 2020/7/31
  * @des:
  */
-class DBRepositoryImpl(val userDao: UserDao, val pageConfig: PagingConfig) : DaoRepository {
+class DaoRepositoryImpl(val userDao: UserDao, val pageConfig: PagingConfig) : DaoRepository {
 
     override fun insertUser(user: User) {
         userDao.inserUsers(user)

@@ -1,32 +1,34 @@
 package com.zxy.androiddemo.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.zxy.androiddemo.db.entries.User
+import com.zxy.androiddemo.bean.PagingBean
 
 /**
  * @author: zxy
  * @date: 2018/7/12
  * @des:
  */
-class PagingAdapter : PagingDataAdapter<User, PagingViewHolder>(diffCallback) {
+class PagingAdapter : PagingDataAdapter<PagingBean, PagingViewHolder>(diffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagingViewHolder {
         return PagingViewHolder(parent)
     }
 
     override fun onBindViewHolder(holder: PagingViewHolder, position: Int) {
-        holder.bindTo(getItem(position))
+        getItem(position)?.let { holder.bindTo(it) }
     }
 
     companion object {
-        private val diffCallback = object : DiffUtil.ItemCallback<User>() {
+        private val diffCallback = object : DiffUtil.ItemCallback<PagingBean>() {
 
-            override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
-                return oldItem.uid == newItem.uid
+            override fun areItemsTheSame(oldItem: PagingBean, newItem: PagingBean): Boolean {
+                return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
+            @SuppressLint("DiffUtilEquals")
+            override fun areContentsTheSame(oldItem: PagingBean, newItem: PagingBean): Boolean {
                 return newItem == oldItem
             }
         }

@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable name="user" type="com.zxy.androiddemo.db.entries.User" />
+        <variable name="pagingBean" type="com.zxy.androiddemo.bean.PagingBean" />
     </data>
 
     <LinearLayout

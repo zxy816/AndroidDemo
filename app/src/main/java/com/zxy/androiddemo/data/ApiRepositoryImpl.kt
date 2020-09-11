@@ -3,7 +3,7 @@ package com.zxy.androiddemo.data
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.zxy.androiddemo.db.entries.User
+import com.zxy.androiddemo.bean.PagingBean
 import com.zxy.androiddemo.http.ApiPagingSource
 import com.zxy.androiddemo.http.ApiService
 import kotlinx.coroutines.flow.Flow
@@ -17,7 +17,7 @@ class ApiRepositoryImpl(val api: ApiService, val pageConfig: PagingConfig) : Api
     /**
      * 从网络上获取数据进行分页
      */
-    override fun getServiceUser(): Flow<PagingData<User>> {
+    override fun getServiceUser(): Flow<PagingData<PagingBean>> {
         return Pager(pageConfig) {
             ApiPagingSource(api)
         }.flow

@@ -1,11 +1,14 @@
 package com.zxy.androiddemo.di
 
 import com.zxy.androiddemo.http.ApiService
+import com.zxy.androiddemo.http.HttpLoggingIntercepter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
-import okhttp3.*
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
 import okio.Buffer
 import retrofit2.Retrofit
@@ -24,6 +27,7 @@ import javax.inject.Singleton
 class NetworkModule {
     private val timeOut: Long = 5
     private val readTimeOut: Long = 10
+    private val tag: String = NetworkModule::class.java.getSimpleName()
 
     @Provides
     @Singleton
@@ -38,6 +42,9 @@ class NetworkModule {
 
                 .retryOnConnectionFailure(true)
                 .addInterceptor(interceptor)
+                .addInterceptor(HttpLoggingIntercepter())
+        //拦截发送的内容
+//        setRequestJson(builder)
         return builder.build()
     }
 
@@ -62,6 +69,7 @@ class NetworkModule {
             val request = it.request()
             val requestBuilder = request.newBuilder()
             requestBuilder.addHeader("Content-Type", "application/json;charset=UTF-8")
+                    //bodyToString(request.body()) 是请求发送的json内容
                     .post(RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), bodyToString(request.body())))
                     .build()
             return@addInterceptor it.proceed(request)

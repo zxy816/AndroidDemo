@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.zxy.androiddemo.R
-import com.zxy.androiddemo.db.entries.User
+import com.zxy.androiddemo.bean.PagingBean
 
 /**
  * @author: zxy
@@ -17,11 +17,11 @@ class PagingViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
 ) {
     private val nameView = itemView.findViewById<TextView>(R.id.name)
     private val sexView = itemView.findViewById<TextView>(R.id.sex)
-    var user: User? = null
+    var pagingBean: PagingBean? = null
 
-    fun bindTo(user: User?) {
-        this.user = user
-        nameView.text = user?.userName
-        sexView.text = user?.sex
+    fun bindTo(pagingBean: PagingBean) {
+        this.pagingBean = pagingBean
+        nameView.text = pagingBean.accountOrderId
+        sexView.text = pagingBean.betMoney
     }
 }

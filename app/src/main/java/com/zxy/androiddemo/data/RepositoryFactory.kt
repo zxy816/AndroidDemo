@@ -9,7 +9,7 @@ import com.zxy.androiddemo.http.ApiService
  */
 object RepositoryFactory {
 
-    fun makeUserRepository(userDao: UserDao): DaoRepository = DBRepositoryImpl(userDao, pagingConfig)
+    fun makeUserRepository(userDao: UserDao): DaoRepository = DaoRepositoryImpl(userDao, pagingConfig)
 
     fun makeUserRepositoryOfService(api: ApiService): ApiRepository = ApiRepositoryImpl(api, pagingConfig)
 
