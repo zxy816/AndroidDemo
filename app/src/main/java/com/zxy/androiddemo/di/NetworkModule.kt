@@ -27,7 +27,7 @@ import javax.inject.Singleton
 class NetworkModule {
     private val timeOut: Long = 5
     private val readTimeOut: Long = 10
-    private val tag: String = NetworkModule::class.java.getSimpleName()
+    private val tag: String = NetworkModule::class.java.simpleName
 
     @Provides
     @Singleton
