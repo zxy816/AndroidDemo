@@ -1,6 +1,7 @@
 package com.zxy.androiddemo.di
 
 import com.zxy.androiddemo.http.ApiService
+import com.zxy.androiddemo.http.ApiCallAdapterFactory
 import com.zxy.androiddemo.http.HttpLoggingIntercepter
 import dagger.Module
 import dagger.Provides
@@ -28,6 +29,8 @@ class NetworkModule {
     private val timeOut: Long = 5
     private val readTimeOut: Long = 10
     private val tag: String = NetworkModule::class.java.simpleName
+    private val baseUrl1 = "http://192.168.9.89:9680"
+    private val baseUrl2 = "http://fanyi.youdao.com/"
 
     @Provides
     @Singleton
@@ -53,8 +56,9 @@ class NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         val retrofit = Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("http://192.168.9.89:9680")
+                .baseUrl(baseUrl2)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(ApiCallAdapterFactory.invoke())
         return retrofit.build()
     }
 

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.databinding.FragmentRegistBinding
 import com.zxy.androiddemo.ui.base.BaseFragment
@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.fragment_regist.*
 
 @AndroidEntryPoint
 class RegistFragment : BaseFragment() {
-    private val viewModel: RegistViewModel by activityViewModels()
+    private val viewModel: RegistViewModel by viewModels()
+
     private lateinit var registBinding: FragmentRegistBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +37,12 @@ class RegistFragment : BaseFragment() {
     private fun setOnClickListener() {
         btn_register.setOnClickListener {
             val userName = registBinding.etUserName.text.toString()
-            viewModel.registerUserDB()
+//            viewModel.registerUserDB()
+            println("userName=$userName")
+            viewModel.translateWord(userName)
+        }
+        viewModel.translate.observe(viewLifecycleOwner) {
+            println("=====界面返回的值为=$it")
         }
     }
 }

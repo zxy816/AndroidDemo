@@ -24,7 +24,6 @@ object RoomModule {
     @Provides
     @Singleton
     fun provideAppDataBase(application: Application): AppDatabase {
-        println("========provideAppDataBase")
         return Room.databaseBuilder(application, AppDatabase::class.java, "demo.db")
                 .addCallback(callback)
                 .addMigrations(MIGRATION_1_2)
@@ -35,14 +34,12 @@ object RoomModule {
     @Provides
     @Singleton
     fun provideUserDao(appDataBase: AppDatabase): UserDao {
-        println("===========provideUserDao")
         return appDataBase.userDao()
     }
 
     private val callback: RoomDatabase.Callback = object : RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
-            println("========callback---onCreate()")
         }
     }
 

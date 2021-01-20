@@ -11,7 +11,7 @@ import okio.Buffer
  * @des: 请求拦截
  */
 class HttpLoggingIntercepter : Interceptor {
-    private val TAG = HttpLoggingIntercepter::class.java.simpleName
+    private val tag = HttpLoggingIntercepter::class.java.simpleName
     override fun intercept(chain: Interceptor.Chain): Response {
         // 请求服务器数据
         val request = chain.request()
@@ -22,7 +22,7 @@ class HttpLoggingIntercepter : Interceptor {
             requestBody.writeTo(buffer)
             body = buffer.readUtf8()
         }
-        Log.i(TAG, " send request: url = ${request.url()}\n request params = $body")
+        Log.i(tag, " send request: url = ${request.url()}\n request params = $body")
         //服务器返回数据
         val response = chain.proceed(request)
         val responseBody = response.body()
@@ -30,7 +30,7 @@ class HttpLoggingIntercepter : Interceptor {
         source.request(java.lang.Long.MAX_VALUE)
         val buffer = source.buffer
         val rBody: String = buffer.clone().readUtf8()
-        Log.i(TAG, "response params = = $rBody")
+        Log.i(tag, "response params = = $rBody")
         return response
     }
 }

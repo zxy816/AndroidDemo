@@ -1,10 +1,9 @@
 package com.zxy.androiddemo.http
 
 import com.zxy.androiddemo.bean.PagingBean
+import com.zxy.androiddemo.bean.YouDaoResult
 import com.zxy.androiddemo.db.entries.User
-import retrofit2.http.Body
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /**
  * @author: zxy
@@ -17,4 +16,8 @@ interface ApiService {
 
     @POST("users")
     fun getUser(@Query("id") id: Int): User
+
+    @FormUrlEncoded
+    @POST("translate?doctype=json")
+    suspend fun translate(@Field("i") i: String): ApiResult<YouDaoResult>
 }

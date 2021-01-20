@@ -4,7 +4,9 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.zxy.androiddemo.bean.PagingBean
+import com.zxy.androiddemo.bean.YouDaoResult
 import com.zxy.androiddemo.http.ApiPagingSource
+import com.zxy.androiddemo.http.ApiResult
 import com.zxy.androiddemo.http.ApiService
 import kotlinx.coroutines.flow.Flow
 
@@ -21,6 +23,10 @@ class ApiRepositoryImpl(val api: ApiService, val pageConfig: PagingConfig) : Api
         return Pager(pageConfig) {
             ApiPagingSource(api)
         }.flow
+    }
+
+    override suspend fun translate(word: String): ApiResult<YouDaoResult> {
+        return api.translate(word)
     }
 
 }

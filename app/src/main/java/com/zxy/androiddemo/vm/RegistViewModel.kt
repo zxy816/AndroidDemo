@@ -1,13 +1,24 @@
 package com.zxy.androiddemo.vm
 
 import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.zxy.androiddemo.data.ApiRepository
 import com.zxy.androiddemo.data.DaoRepository
 import com.zxy.androiddemo.db.entries.Address
 import com.zxy.androiddemo.db.entries.User
+import com.zxy.androiddemo.http.ApiResult
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.doAsync
 
-class RegistViewModel @ViewModelInject constructor(val userRepository: DaoRepository) : ViewModel() {
+class RegistViewModel @ViewModelInject constructor(
+        val userRepository: DaoRepository, val apiRepository: ApiRepository) : ViewModel() {
+
+    private val translateResult: MutableLiveData<String> = MutableLiveData()
+
+    val translate: LiveData<String> get() = translateResult
 
     fun registerUserDB() {
         doAsync {
@@ -23,6 +34,19 @@ class RegistViewModel @ViewModelInject constructor(val userRepository: DaoReposi
                 address.city = "西安市"
                 address.county = "雁塔区"
                 userRepository.insertUser(user)
+            }
+        }
+    }
+
+    fun translateWord(word: String) {
+        viewModelScope.launch {
+            when (val result = apiRepository.translate(word)) {
+                is ApiResult.Success -> {
+                    translateResult.value = result.data.translateResult[0][0].tgt
+                }
+                is ApiResult.Failure -> {
+                    translateResult.value = "errorCode:${result.errorCode},errorMsg:${result.errorMsg}"
+                }
             }
         }
     }
