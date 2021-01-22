@@ -1,7 +1,7 @@
 package com.zxy.androiddemo.di
 
-import com.zxy.androiddemo.http.ApiService
 import com.zxy.androiddemo.http.ApiCallAdapterFactory
+import com.zxy.androiddemo.http.ApiService
 import com.zxy.androiddemo.http.HttpLoggingIntercepter
 import dagger.Module
 import dagger.Provides
@@ -31,6 +31,7 @@ class NetworkModule {
     private val tag: String = NetworkModule::class.java.simpleName
     private val baseUrl1 = "http://192.168.9.89:9680"
     private val baseUrl2 = "http://fanyi.youdao.com/"
+    private val baseUrl3 = "http://180.167.143.4:9680/"
 
     @Provides
     @Singleton
@@ -47,7 +48,7 @@ class NetworkModule {
                 .addInterceptor(interceptor)
                 .addInterceptor(HttpLoggingIntercepter())
         //拦截发送的内容
-//        setRequestJson(builder)
+        setRequestJson(builder)
         return builder.build()
     }
 
@@ -56,7 +57,7 @@ class NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         val retrofit = Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl(baseUrl2)
+                .baseUrl(baseUrl3)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(ApiCallAdapterFactory.invoke())
         return retrofit.build()

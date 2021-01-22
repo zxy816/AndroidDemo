@@ -7,7 +7,7 @@ import com.zxy.androiddemo.bean.PagingBean
 import com.zxy.androiddemo.data.ApiRepository
 import kotlinx.coroutines.flow.Flow
 
-class PagingViewModel @ViewModelInject constructor(val apiRepository: ApiRepository) : ViewModel() {
+class PagingViewModel @ViewModelInject constructor(private val apiRepository: ApiRepository) : ViewModel() {
 
     //    val getUsers: LiveData<PagingData<User>> = userRepository.getAllUsers().asLiveData()
     val getUsers: Flow<PagingData<PagingBean>> = apiRepository.getServiceUser()

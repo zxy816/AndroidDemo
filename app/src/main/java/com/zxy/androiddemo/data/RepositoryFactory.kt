@@ -13,7 +13,7 @@ object RepositoryFactory {
 
     fun makeUserRepositoryOfService(api: ApiService): ApiRepository = ApiRepositoryImpl(api, pagingConfig)
 
-    val pagingConfig = PagingConfig(
+    private val pagingConfig = PagingConfig(
             // 每页显示的数据的大小
             pageSize = 20,
             // 开启占位符

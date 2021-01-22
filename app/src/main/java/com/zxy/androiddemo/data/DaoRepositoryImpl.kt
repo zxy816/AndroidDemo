@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
  * @date: 2020/7/31
  * @des:
  */
-class DaoRepositoryImpl(val userDao: UserDao, val pageConfig: PagingConfig) : DaoRepository {
+class DaoRepositoryImpl(private val userDao: UserDao, private val pageConfig: PagingConfig) : DaoRepository {
 
     override fun insertUser(user: User) {
         userDao.inserUsers(user)
@@ -20,7 +20,6 @@ class DaoRepositoryImpl(val userDao: UserDao, val pageConfig: PagingConfig) : Da
 
     override fun getAllUsers(): Flow<PagingData<User>> {
         return Pager(pageConfig) {
-            println("========" + Thread.currentThread().name)
             userDao.getUsers()
         }.flow
     }

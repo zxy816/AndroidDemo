@@ -1,6 +1,6 @@
 package com.zxy.androiddemo.bean
 
-class PagingBean{
+class PagingBean {
     var betResult: String? = null
     var gameIssueInfo: GameIssueInfoBean? = null
     var correctCount = 0
@@ -32,33 +32,22 @@ class PagingBean{
     var printTime: Long = 0
 
     class GameIssueInfoBean {
-        /**
-         * gameName : 3D
-         */
         var gameName: String? = null
     }
+
     class ChannelBean {
-        /**
-         * channelName : 监管平台扩容测试
-         */
         var channelName: String? = null
     }
+
     class PrintTicketStatusBean {
-        /**
-         * name : fail
-         */
         var name: String? = null
     }
+
     class CorrectStatusBean {
-        /**
-         * name : notCorrect
-         */
         var name: String? = null
     }
+
     class SettlementTypeBean {
-        /**
-         * name : shared
-         */
         var name: String? = null
     }
 }

@@ -18,10 +18,6 @@ class LoginFragment : BaseFragment() {
     private lateinit var viewModel: LoginViewModel
     private lateinit var loginBinding: FragmentLoginBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         loginBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
         return loginBinding.root

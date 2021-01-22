@@ -1,7 +1,9 @@
-package com.zxy.androiddemo.http
+package com.zxy.androiddemo.data
 
 import androidx.paging.PagingSource
 import com.zxy.androiddemo.bean.PagingBean
+import com.zxy.androiddemo.http.ApiLoader
+import com.zxy.androiddemo.http.ApiService
 import java.lang.Exception
 
 /**
@@ -9,7 +11,7 @@ import java.lang.Exception
  * @date: 2020/8/21
  * @des: 网络请求分页显示
  */
-class ApiPagingSource(val api: ApiService) : PagingSource<Int, PagingBean>() {
+class ApiPagingSource(private val api: ApiService) : PagingSource<Int, PagingBean>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PagingBean> {
         return try {
             val nextPageNumber = params.key ?: 0

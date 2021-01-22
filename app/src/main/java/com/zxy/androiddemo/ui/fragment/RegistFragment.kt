@@ -19,10 +19,6 @@ class RegistFragment : BaseFragment() {
 
     private lateinit var registBinding: FragmentRegistBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         registBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_regist, container, false)
         return registBinding.root
@@ -38,8 +34,9 @@ class RegistFragment : BaseFragment() {
         btn_register.setOnClickListener {
             val userName = registBinding.etUserName.text.toString()
 //            viewModel.registerUserDB()
-            println("userName=$userName")
-            viewModel.translateWord(userName)
+//            println("userName=$userName")
+//            viewModel.translateWord(userName)
+            viewModel.lotteryBet()
         }
         viewModel.translate.observe(viewLifecycleOwner) {
             println("=====界面返回的值为=$it")

@@ -1,7 +1,5 @@
 package com.zxy.androiddemo.http
 
-import java.io.IOException
-
 /**
  * @author: zxy
  * @date: 2021/1/19

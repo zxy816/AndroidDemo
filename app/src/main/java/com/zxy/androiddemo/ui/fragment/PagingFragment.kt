@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zxy.androiddemo.R
-import com.zxy.androiddemo.ui.adapter.PagingAdapter
 import com.zxy.androiddemo.databinding.FragmentPagingBinding
+import com.zxy.androiddemo.ui.adapter.PagingAdapter
 import com.zxy.androiddemo.ui.base.BaseFragment
 import com.zxy.androiddemo.vm.PagingViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,13 +22,9 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class PagingFragment : BaseFragment() {
 
-    private val viewModel: PagingViewModel by activityViewModels()
+    private val viewModel: PagingViewModel by viewModels()
     private lateinit var pagingBinding: FragmentPagingBinding
     private val adapter by lazy { PagingAdapter() }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         pagingBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_paging, container, false)
@@ -48,7 +44,6 @@ class PagingFragment : BaseFragment() {
         lifecycleScope.launch {
             @OptIn(ExperimentalCoroutinesApi::class)
             viewModel.getUsers.collectLatest {
-                println("========" + Thread.currentThread().name)
                 adapter.submitData(it)
             }
         }
