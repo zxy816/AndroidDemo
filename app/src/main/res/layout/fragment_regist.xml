@@ -1,94 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <data>
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/select_btn_bg"
+        android:text="注册"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:id="@+id/iv_header"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:src="@mipmap/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
-    </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_mobile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/list_top_bottom"
+        android:drawableStart="@android:drawable/ic_menu_myplaces"
+        android:drawablePadding="8dp"
+        android:hint="手机号"
+        android:inputType="number"
+        android:maxLines="1"
+        android:paddingStart="8dp"
+        android:textSize="@dimen/textSize_20"
+        app:layout_constraintTop_toBottomOf="@id/et_userName" />
 
-        <ImageView
-            android:id="@+id/iv_header"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:src="@mipmap/logo" />
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/list_top_bottom"
+        android:drawableStart="@mipmap/pwd"
+        android:drawablePadding="8dp"
+        android:hint="密码"
+        android:inputType="number"
+        android:maxLines="1"
+        android:paddingStart="8dp"
+        android:textSize="@dimen/textSize_20"
+        app:layout_constraintTop_toBottomOf="@id/et_mobile" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_userName"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:paddingStart="8dp"
-            android:layout_margin="16dp"
-            android:drawablePadding="8dp"
-            android:background="@drawable/list_top_bottom"
-            android:drawableStart="@mipmap/user_name"
-            android:hint="用户名"
-            android:maxLines="1"
-            android:textSize="@dimen/textSize_20"
-            app:layout_constraintTop_toBottomOf="@id/iv_header" />
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_surePwd"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/list_top_bottom"
+        android:drawableStart="@mipmap/pwd"
+        android:drawablePadding="8dp"
+        android:hint="确认密码"
+        android:inputType="number"
+        android:maxLines="1"
+        android:paddingStart="8dp"
+        android:textSize="@dimen/textSize_20"
+        app:layout_constraintTop_toBottomOf="@id/et_pwd" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_mobile"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:paddingStart="8dp"
-            android:layout_margin="16dp"
-            android:drawablePadding="8dp"
-            android:background="@drawable/list_top_bottom"
-            android:drawableStart="@android:drawable/ic_menu_myplaces"
-            android:hint="手机号"
-            android:inputType="number"
-            android:maxLines="1"
-            android:textSize="@dimen/textSize_20"
-            app:layout_constraintTop_toBottomOf="@id/et_userName" />
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_pwd"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:paddingStart="8dp"
-            android:layout_margin="16dp"
-            android:drawablePadding="8dp"
-            android:background="@drawable/list_top_bottom"
-            android:drawableStart="@mipmap/pwd"
-            android:hint="密码"
-            android:inputType="number"
-            android:maxLines="1"
-            android:textSize="@dimen/textSize_20"
-            app:layout_constraintTop_toBottomOf="@id/et_mobile" />
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_surePwd"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:paddingStart="8dp"
-            android:layout_margin="16dp"
-            android:drawablePadding="8dp"
-            android:background="@drawable/list_top_bottom"
-            android:drawableStart="@mipmap/pwd"
-            android:hint="确认密码"
-            android:inputType="number"
-            android:maxLines="1"
-            android:textSize="@dimen/textSize_20"
-            app:layout_constraintTop_toBottomOf="@id/et_pwd" />
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_userName"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/list_top_bottom"
+        android:drawableStart="@mipmap/user_name"
+        android:drawablePadding="8dp"
+        android:hint="用户名"
+        android:maxLines="1"
+        android:paddingStart="8dp"
+        android:textSize="@dimen/textSize_20"
+        app:layout_constraintTop_toBottomOf="@id/iv_header" />
 
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:background="@drawable/select_btn_bg"
-            android:text="注册"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>
