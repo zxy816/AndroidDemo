@@ -13,11 +13,12 @@ import kotlinx.coroutines.flow.Flow
  * @des:
  */
 class ApiRepositoryImpl(private val api: ApiService, private val pageConfig: PagingConfig) : ApiRepository {
+
     /**
      * 从网络上获取数据进行分页
      */
-    override fun getServiceUser(): Flow<PagingData<PagingBean>> {
-        return Pager(pageConfig) {
+    override fun getHubAndroid(): Flow<PagingData<PagingBean>> {
+        return Pager(pageConfig){
             ApiPagingSource(api)
         }.flow
     }

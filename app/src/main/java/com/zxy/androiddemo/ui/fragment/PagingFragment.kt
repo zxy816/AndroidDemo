@@ -40,7 +40,6 @@ class PagingFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         lifecycleScope.launch {
-            @OptIn(ExperimentalCoroutinesApi::class)
             viewModel.getUsers.collectLatest {
                 adapter.submitData(it)
             }

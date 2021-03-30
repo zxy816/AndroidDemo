@@ -83,7 +83,7 @@ dependencies {
     implementation "androidx.room:room-guava:$room_version"
     testImplementation "androidx.room:room-testing:$room_version"
     //paging
-    def paing_version = "3.0.0-alpha01"
+    def paing_version = "3.0.0-beta01"
     implementation "androidx.paging:paging-runtime:$paing_version"
     testImplementation "androidx.paging:paging-common:$paing_version"
     implementation "androidx.paging:paging-rxjava2:$paing_version"

@@ -2,6 +2,7 @@ package com.zxy.androiddemo.http
 
 import com.google.gson.JsonObject
 import com.zxy.androiddemo.bean.PagingBean
+import com.zxy.androiddemo.bean.PagingResponse
 import com.zxy.androiddemo.bean.YouDaoResult
 import com.zxy.androiddemo.db.entries.User
 import retrofit2.http.*
@@ -12,9 +13,8 @@ import retrofit2.http.*
  * @des:
  */
 interface ApiService {
-    @POST("/")
-    suspend fun getTestData(@Body params: JsonObject): List<PagingBean>
-
+    @GET("search/repositories?sort=stars&q=Android")
+    suspend fun getTestData(@Query("page") page: Int, @Query("per_page") perPage: Int): PagingResponse
     @POST("users")
     fun getUser(@Query("id") id: Int): User
 

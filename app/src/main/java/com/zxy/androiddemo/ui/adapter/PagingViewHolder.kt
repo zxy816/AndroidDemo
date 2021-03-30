@@ -21,7 +21,7 @@ class PagingViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
 
     fun bindTo(pagingBean: PagingBean) {
         this.pagingBean = pagingBean
-        nameView.text = pagingBean.accountOrderId
-        sexView.text = pagingBean.betMoney
+        nameView.text = pagingBean.name
+        sexView.text = pagingBean.description
     }
 }

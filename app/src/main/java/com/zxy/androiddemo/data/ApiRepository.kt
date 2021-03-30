@@ -11,5 +11,5 @@ import kotlinx.coroutines.flow.Flow
  */
 interface ApiRepository {
 
-    fun getServiceUser(): Flow<PagingData<PagingBean>>
+    fun getHubAndroid(): Flow<PagingData<PagingBean>>
 }
