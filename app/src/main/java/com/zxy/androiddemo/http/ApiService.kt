@@ -15,6 +15,7 @@ import retrofit2.http.*
 interface ApiService {
     @GET("search/repositories?sort=stars&q=Android")
     suspend fun getTestData(@Query("page") page: Int, @Query("per_page") perPage: Int): PagingResponse
+
     @POST("users")
     fun getUser(@Query("id") id: Int): User
 

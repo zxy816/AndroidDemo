@@ -1,8 +1,8 @@
 package com.zxy.androiddemo
 
-import androidx.test.runner.AndroidJUnit4
-import org.junit.After
-import org.junit.Before
+import android.os.CountDownTimer
+import android.os.Looper
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -10,19 +10,28 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
 
-    @Before
-   fun createDB(){
-
-   }
-
-    @After
-    fun closeDB(){
-
-    }
+    private lateinit var countDownTimer: CountDownTimer;
 
     @Test
-    fun testUserDao(){
+    public fun test() {
+        statTime();
+    }
 
+    private fun statTime() {
+        Looper.prepare()
+        countDownTimer = object : CountDownTimer(60 * 1000, 1000) {
+            override fun onTick(mMillisInFuture: Long) {
+                println("===== ${mMillisInFuture / 1000}")
+            }
+
+            override fun onFinish() {
+
+            }
+        }
+
+        countDownTimer.start()
+
+        Looper.loop()
     }
 
 }

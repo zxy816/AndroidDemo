@@ -15,13 +15,15 @@ import com.zxy.androiddemo.bean.PagingBean
 class PagingViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_paging_recyclerview, parent, false)
 ) {
-    private val nameView = itemView.findViewById<TextView>(R.id.name)
-    private val sexView = itemView.findViewById<TextView>(R.id.sex)
+    private val nameText = itemView.findViewById<TextView>(R.id.tv_name)
+    private val descText = itemView.findViewById<TextView>(R.id.tv_description)
+    private val starText = itemView.findViewById<TextView>(R.id.tv_star_count)
     var pagingBean: PagingBean? = null
 
     fun bindTo(pagingBean: PagingBean) {
         this.pagingBean = pagingBean
-        nameView.text = pagingBean.name
-        sexView.text = pagingBean.description
+        nameText.text = pagingBean.name
+        descText.text = pagingBean.description
+        starText.text = pagingBean.starCount.toString()
     }
 }

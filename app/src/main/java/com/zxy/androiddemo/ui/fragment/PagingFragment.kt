@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zxy.androiddemo.databinding.FragmentPagingBinding
 import com.zxy.androiddemo.ui.adapter.PagingAdapter
 import com.zxy.androiddemo.ui.base.BaseFragment
 import com.zxy.androiddemo.vm.PagingViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -42,6 +42,21 @@ class PagingFragment : BaseFragment() {
         lifecycleScope.launch {
             viewModel.getUsers.collectLatest {
                 adapter.submitData(it)
+            }
+        }
+        adapter.addLoadStateListener {
+            when (it.refresh) {
+                is LoadState.NotLoading -> {
+                    binding.swipeRefresh.visibility = View.INVISIBLE
+                }
+                is LoadState.Loading -> {
+                    binding.swipeRefresh.visibility = View.VISIBLE
+                }
+                is LoadState.Error -> {
+                    binding.swipeRefresh.visibility = View.INVISIBLE
+                    val state = it.refresh as LoadState.Error
+                    showToast("加载错误:$state")
+                }
             }
         }
     }
