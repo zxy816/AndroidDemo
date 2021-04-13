@@ -3,4 +3,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="menu_home">首页</string>
+    <string name="menu_paging">分页</string>
+    <string name="menu_other">视频</string>
+    <string name="menu_my">我的</string>
 </resources>

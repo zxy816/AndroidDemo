@@ -1,4 +1,4 @@
-package com.zxy.androiddemo.ui.fragment
+package com.zxy.androiddemo.ui.my
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,15 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.zxy.androiddemo.databinding.FragmentRegistBinding
 import com.zxy.androiddemo.ui.base.BaseFragment
-import com.zxy.androiddemo.vm.RegistViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RegistFragment : BaseFragment() {
     private val viewModel: RegistViewModel by viewModels()
 
-    private var _binding: FragmentRegistBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var _binding: FragmentRegistBinding
+    private val binding get() = _binding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentRegistBinding.inflate(inflater, container, false)
@@ -24,7 +23,6 @@ class RegistFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mainActivity.setToolbar(isShow = true, back = true, title = "注册")
         setOnClickListener()
     }
 
@@ -39,10 +37,5 @@ class RegistFragment : BaseFragment() {
         viewModel.translate.observe(viewLifecycleOwner) {
             println("=====界面返回的值为=$it")
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

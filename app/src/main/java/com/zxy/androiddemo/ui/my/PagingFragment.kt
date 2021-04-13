@@ -1,4 +1,4 @@
-package com.zxy.androiddemo.ui.fragment
+package com.zxy.androiddemo.ui.my
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.zxy.androiddemo.databinding.FragmentPagingBinding
 import com.zxy.androiddemo.ui.adapter.PagingAdapter
 import com.zxy.androiddemo.ui.base.BaseFragment
-import com.zxy.androiddemo.vm.PagingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -20,18 +19,18 @@ import kotlinx.coroutines.launch
 class PagingFragment : BaseFragment() {
 
     private val viewModel: PagingViewModel by viewModels()
-    private var _binding: FragmentPagingBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var _binding: FragmentPagingBinding
+    private val binding get() = _binding
     private val adapter by lazy { PagingAdapter() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentPagingBinding.inflate(inflater, container, false)
+        println("==========paging Fragment onCreateView==========")
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mainActivity.setToolbar(isShow = true, back = true, title = "分页")
         //paging test
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         binding.recyclerView.adapter = adapter
@@ -39,8 +38,9 @@ class PagingFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        println("==========paging Fragment onActivityCreated==========")
         lifecycleScope.launch {
-            viewModel.getUsers.collectLatest {
+            viewModel.getHubAndroid.collectLatest {
                 adapter.submitData(it)
             }
         }
@@ -59,10 +59,5 @@ class PagingFragment : BaseFragment() {
                 }
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

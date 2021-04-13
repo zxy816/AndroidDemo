@@ -1,4 +1,4 @@
-package com.zxy.androiddemo.vm
+package com.zxy.androiddemo.ui.my
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData

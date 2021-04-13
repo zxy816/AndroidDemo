@@ -1,4 +1,4 @@
-package com.zxy.androiddemo.vm
+package com.zxy.androiddemo.ui.my
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel;
@@ -9,6 +9,6 @@ import kotlinx.coroutines.flow.Flow
 
 class PagingViewModel @ViewModelInject constructor(private val apiRepository: ApiRepository) : ViewModel() {
 
-    val getUsers: Flow<PagingData<PagingBean>> = apiRepository.getHubAndroid()
+    val getHubAndroid: Flow<PagingData<PagingBean>> = apiRepository.getHubAndroid()
 
 }
