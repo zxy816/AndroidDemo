@@ -1,6 +1,6 @@
 package com.zxy.androiddemo.di
 
-import com.zxy.androiddemo.http.ApiCallAdapterFactory
+import android.util.Log
 import com.zxy.androiddemo.http.ApiService
 import com.zxy.androiddemo.http.HttpLoggingIntercepter
 import dagger.Module
@@ -10,6 +10,7 @@ import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import okio.Buffer
 import retrofit2.Retrofit
@@ -36,7 +37,7 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
-        val interceptor = HttpLoggingInterceptor()
+        val interceptor = getLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         interceptor.level = HttpLoggingInterceptor.Level.BODY
 
         val builder = OkHttpClient.Builder()
@@ -69,19 +70,39 @@ class NetworkModule {
         return retrofit.create(ApiService::class.java)
     }
 
-    fun setRequestJson(builder: OkHttpClient.Builder) {
+    /**
+     * 拦截请求信息
+     */
+    private fun getLoggingInterceptor(level: HttpLoggingInterceptor.Level): HttpLoggingInterceptor {
+        val loggingInterceptor = HttpLoggingInterceptor { message: String ->
+            Log.i(tag, message)
+        }
+        loggingInterceptor.level = level
+        return loggingInterceptor
+    }
+
+    private fun setRequestJson(builder: OkHttpClient.Builder) {
         builder.addInterceptor {
             val request = it.request()
             val requestBuilder = request.newBuilder()
+            // 请求发送内容
+            val requestContent = bodyToString(request.body())
             requestBuilder.addHeader("Content-Type", "application/json;charset=UTF-8")
-                    //bodyToString(request.body()) 是请求发送的json内容
-                    .post(RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), bodyToString(request.body())))
+                    .post(RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), requestContent))
                     .build()
-            return@addInterceptor it.proceed(request)
+            // 获取请求返回信息
+            val response = it.proceed(request)
+            val contentType = response.body()?.contentType();
+            val responseContent = response.body()?.string();
+            Log.i(tag, "请求地址: ${request.url()}")
+            Log.i(tag, "请求内容: $requestContent")
+            Log.i(tag, "返回内容: $responseContent")
+            return@addInterceptor response.newBuilder().body(
+                    ResponseBody.create(contentType, responseContent)).build()
         }
     }
 
-    fun bodyToString(request: RequestBody?): String? {
+    private fun bodyToString(request: RequestBody?): String? {
         return try {
             val buffer = Buffer()
             if (request != null) request.writeTo(buffer) else ""

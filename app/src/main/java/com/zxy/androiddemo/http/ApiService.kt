@@ -1,7 +1,6 @@
 package com.zxy.androiddemo.http
 
 import com.google.gson.JsonObject
-import com.zxy.androiddemo.bean.PagingBean
 import com.zxy.androiddemo.bean.PagingResponse
 import com.zxy.androiddemo.bean.YouDaoResult
 import com.zxy.androiddemo.db.entries.User
