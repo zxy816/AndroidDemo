@@ -1,27 +1,24 @@
 buildscript {
-    ext {
-        config = "${rootDir}/config.gradle"
-    }
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
-//        maven { url 'https://maven.google.com/' }
+        mavenCentral()
+        google()
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
         classpath 'com.google.dagger:hilt-android-gradle-plugin:2.28-alpha'
     }
 }
 
+plugins {
+    id "com.zxy.plugin"
+}
+
 allprojects {
     repositories {
-//        jcenter()
-//        google()
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
-//        maven { url 'https://maven.google.com/' }
+        mavenCentral()
+        google()
     }
 }
 
