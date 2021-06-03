@@ -1,12 +1,12 @@
 buildscript {
     repositories {
-        mavenCentral()
         google()
+        mavenCentral()
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.0'
         classpath 'com.google.dagger:hilt-android-gradle-plugin:2.28-alpha'
     }
 }
@@ -17,8 +17,8 @@ plugins {
 
 allprojects {
     repositories {
-        mavenCentral()
         google()
+        mavenCentral()
     }
 }
 
