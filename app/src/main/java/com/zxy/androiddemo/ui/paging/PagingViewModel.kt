@@ -1,4 +1,4 @@
-package com.zxy.androiddemo.ui.my
+package com.zxy.androiddemo.ui.paging
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel;

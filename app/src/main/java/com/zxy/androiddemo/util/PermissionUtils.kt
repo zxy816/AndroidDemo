@@ -51,7 +51,7 @@ class PermissionUtils {
     fun requestPermissions(@NonNull activity: Activity, requestCode: Int) {
         val permissionList: MutableList<String> = ArrayList()
         for (permission in permissions) {
-            if (ContextCompat.checkSelfPermission(activity!!, permission) !== PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(activity, permission) !== PackageManager.PERMISSION_GRANTED) {
                 permissionList.add(permission)
             }
         }
@@ -83,13 +83,11 @@ class PermissionUtils {
                 denied.add(perm)
             }
         }
-        if (null != callBack) {
-            if (denied.isEmpty()) {
-                callBack.onPermissionsAllGranted(requestCode, granted, denied.isEmpty())
-            }
-            if (!denied.isEmpty()) {
-                callBack.onPermissionsDenied(requestCode, denied)
-            }
+        if (denied.isEmpty()) {
+            callBack.onPermissionsAllGranted(requestCode, granted, denied.isEmpty())
+        }
+        if (!denied.isEmpty()) {
+            callBack.onPermissionsDenied(requestCode, denied)
         }
     }
 }

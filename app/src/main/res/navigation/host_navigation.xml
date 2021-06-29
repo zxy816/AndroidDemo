@@ -13,19 +13,19 @@
 
     <fragment
         android:id="@+id/navigation_paging"
-        android:name="com.zxy.androiddemo.ui.my.PagingFragment"
+        android:name="com.zxy.androiddemo.ui.paging.PagingFragment"
         android:label="@string/menu_paging"
         tools:layout="@layout/fragment_paging" />
 
     <fragment
         android:id="@+id/navigation_other"
-        android:name="com.zxy.androiddemo.ui.my.PagingFragment"
+        android:name="com.zxy.androiddemo.ui.paging.PagingFragment"
         android:label="@string/menu_other"
         tools:layout="@layout/fragment_paging" />
 
     <fragment
         android:id="@+id/navigation_my"
-        android:name="com.zxy.androiddemo.ui.my.PagingFragment"
+        android:name="com.zxy.androiddemo.ui.paging.PagingFragment"
         android:label="@string/menu_my"
         tools:layout="@layout/fragment_paging" />
 

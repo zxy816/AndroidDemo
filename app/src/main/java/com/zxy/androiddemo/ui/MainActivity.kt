@@ -6,6 +6,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.zxy.androiddemo.R
 import com.zxy.androiddemo.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(setOf(
                 R.id.navigation_home, R.id.navigation_paging, R.id.navigation_home, R.id.navigation_paging))
         setupActionBarWithNavController(navController, appBarConfiguration)
+        binding.navView.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
         binding.navView.setupWithNavController(navController)
 
     }

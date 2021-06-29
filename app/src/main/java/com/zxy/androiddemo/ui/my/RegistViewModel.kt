@@ -52,14 +52,7 @@ class RegistViewModel @ViewModelInject constructor(
 
     fun lotteryBet() {
         viewModelScope.launch {
-            when (val result = apiService.lotteryBet(ApiLoader.lotteryBet())) {
-                is ApiResult.Success -> {
-                    translateResult.value = result.data.toString()
-                }
-                is ApiResult.Failure -> {
-                    translateResult.value = "errorCode:${result.errorCode},errorMsg:${result.errorMsg}"
-                }
-            }
+
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.zxy.androiddemo.ui.my
+package com.zxy.androiddemo.ui.paging
 
 import android.os.Bundle
 import android.view.LayoutInflater

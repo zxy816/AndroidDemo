@@ -32,7 +32,7 @@ class NetworkModule {
     private val tag: String = NetworkModule::class.java.simpleName
     private val baseUrl1 = "https://api.github.com/"
     private val baseUrl2 = "http://fanyi.youdao.com/"
-    private val baseUrl3 = "http://180.167.143.4:9680/"
+    private val baseUrl3 = "https://api.virapi.com/vir_zxy/demo"
 
     @Provides
     @Singleton
