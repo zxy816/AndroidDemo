@@ -27,12 +27,14 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 @Module
 class NetworkModule {
+    private val tag: String = NetworkModule::class.java.simpleName
     private val timeOut: Long = 5
     private val readTimeOut: Long = 10
-    private val tag: String = NetworkModule::class.java.simpleName
-    private val baseUrl1 = "https://api.github.com/"
-    private val baseUrl2 = "http://fanyi.youdao.com/"
-    private val baseUrl3 = "https://api.virapi.com/vir_zxy/demo"
+
+//    fun gitHubUrl(): String = "https://api.github.com/"
+//    fun youDaoUrl(): String = "http://fanyi.youdao.com/"
+//    fun virApiUrl(): String = "https://api.virapi.com/vir_zxy/demo"
+
 
     @Provides
     @Singleton
@@ -58,7 +60,7 @@ class NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         val retrofit = Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl(baseUrl1)
+                .baseUrl("")
                 .addConverterFactory(GsonConverterFactory.create())
 //                .addCallAdapterFactory(ApiCallAdapterFactory.invoke())
         return retrofit.build()

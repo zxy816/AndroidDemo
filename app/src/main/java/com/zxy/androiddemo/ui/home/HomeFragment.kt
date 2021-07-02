@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.zxy.androiddemo.databinding.FragmentPagingBinding
 import com.zxy.androiddemo.ui.base.BaseFragment
+import retrofit2.Retrofit
 
 class HomeFragment : BaseFragment() {
 
@@ -22,5 +23,10 @@ class HomeFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        loadData();
+    }
+
+    private fun loadData() {
+
     }
 }
