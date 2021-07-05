@@ -15,6 +15,10 @@ interface ApiService {
     @GET("search/repositories?sort=stars&q=Android")
     suspend fun getTestData(@Query("page") page: Int, @Query("per_page") perPage: Int): PagingResponse
 
+    @FormUrlEncoded
+    @POST("main")
+    suspend fun getVirHome(@Field("userName") userName: String): ApiResult<String>
+
     @POST("users")
     fun getUser(@Query("id") id: Int): User
 

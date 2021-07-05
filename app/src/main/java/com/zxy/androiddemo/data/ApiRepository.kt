@@ -12,4 +12,6 @@ import kotlinx.coroutines.flow.Flow
 interface ApiRepository {
 
     fun getHubAndroid(): Flow<PagingData<PagingBean>>
+
+    fun getVirApiHome(userName: String): Flow<List<String>>
 }

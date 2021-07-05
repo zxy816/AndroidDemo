@@ -31,9 +31,9 @@ class NetworkModule {
     private val timeOut: Long = 5
     private val readTimeOut: Long = 10
 
-//    fun gitHubUrl(): String = "https://api.github.com/"
-//    fun youDaoUrl(): String = "http://fanyi.youdao.com/"
-//    fun virApiUrl(): String = "https://api.virapi.com/vir_zxy/demo"
+    fun gitHubUrl(): String = "https://api.github.com/"
+    fun youDaoUrl(): String = "http://fanyi.youdao.com/"
+    fun virApiUrl(): String = "https://api.virapi.com/vir_zxy/demo/"
 
 
     @Provides
@@ -60,7 +60,7 @@ class NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         val retrofit = Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("")
+                .baseUrl(virApiUrl())
                 .addConverterFactory(GsonConverterFactory.create())
 //                .addCallAdapterFactory(ApiCallAdapterFactory.invoke())
         return retrofit.build()

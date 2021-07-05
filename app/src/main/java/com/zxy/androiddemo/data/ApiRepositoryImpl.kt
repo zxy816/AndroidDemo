@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import com.zxy.androiddemo.bean.PagingBean
 import com.zxy.androiddemo.http.ApiService
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 /**
  * @author: zxy
@@ -18,8 +19,15 @@ class ApiRepositoryImpl(private val api: ApiService, private val pageConfig: Pag
      * 从网络上获取数据进行分页
      */
     override fun getHubAndroid(): Flow<PagingData<PagingBean>> {
-        return Pager(pageConfig){
+        return Pager(pageConfig) {
             ApiPagingSource(api)
         }.flow
+    }
+
+
+    override fun getVirApiHome(userName: String): Flow<List<String>> {
+        return flow {
+            api.getVirHome(userName)
+        }
     }
 }
