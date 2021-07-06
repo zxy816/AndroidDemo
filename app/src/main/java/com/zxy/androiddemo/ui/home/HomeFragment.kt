@@ -32,7 +32,7 @@ class HomeFragment : BaseFragment() {
     private fun loadData() {
         lifecycleScope.launch {
             viewModel.homeApi("zxy").collect {
-                println(it)
+                println("========:${it}")
             }
         }
     }

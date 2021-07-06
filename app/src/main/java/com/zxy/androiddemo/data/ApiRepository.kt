@@ -2,6 +2,7 @@ package com.zxy.androiddemo.data
 
 import androidx.paging.PagingData
 import com.zxy.androiddemo.bean.PagingBean
+import com.zxy.androiddemo.bean.VirHome
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -13,5 +14,5 @@ interface ApiRepository {
 
     fun getHubAndroid(): Flow<PagingData<PagingBean>>
 
-    fun getVirApiHome(userName: String): Flow<List<String>>
+    fun getVirApiHome(userName: String): Flow<VirHome>
 }

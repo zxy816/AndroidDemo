@@ -22,7 +22,7 @@ class HttpLoggingIntercepter : Interceptor {
             requestBody.writeTo(buffer)
             body = buffer.readUtf8()
         }
-        Log.i(tag, " send request: url = ${request.url()}\n request params = $body")
+        Log.i(tag, " send request: url : ${request.url()},params : $body")
         //服务器返回数据
         val response = chain.proceed(request)
         val responseBody = response.body()
@@ -30,7 +30,7 @@ class HttpLoggingIntercepter : Interceptor {
         source.request(java.lang.Long.MAX_VALUE)
         val buffer = source.buffer
         val rBody: String = buffer.clone().readUtf8()
-        Log.i(tag, "response params = = $rBody")
+        Log.i(tag, "response params : $rBody")
         return response
     }
 }

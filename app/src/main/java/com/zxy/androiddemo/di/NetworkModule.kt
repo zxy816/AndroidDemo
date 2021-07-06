@@ -1,6 +1,7 @@
 package com.zxy.androiddemo.di
 
 import android.util.Log
+import com.zxy.androiddemo.http.ApiCallAdapterFactory
 import com.zxy.androiddemo.http.ApiService
 import com.zxy.androiddemo.http.HttpLoggingIntercepter
 import dagger.Module
@@ -72,17 +73,6 @@ class NetworkModule {
         return retrofit.create(ApiService::class.java)
     }
 
-    /**
-     * 拦截请求信息
-     */
-    private fun getLoggingInterceptor(level: HttpLoggingInterceptor.Level): HttpLoggingInterceptor {
-        val loggingInterceptor = HttpLoggingInterceptor { message: String ->
-            Log.i(tag, message)
-        }
-        loggingInterceptor.level = level
-        return loggingInterceptor
-    }
-
     private fun setRequestJson(builder: OkHttpClient.Builder) {
         builder.addInterceptor {
             val request = it.request()
@@ -102,6 +92,17 @@ class NetworkModule {
             return@addInterceptor response.newBuilder().body(
                     ResponseBody.create(contentType, responseContent)).build()
         }
+    }
+
+    /**
+     * 拦截请求信息
+     */
+    private fun getLoggingInterceptor(level: HttpLoggingInterceptor.Level): HttpLoggingInterceptor {
+        val loggingInterceptor = HttpLoggingInterceptor { message: String ->
+            Log.i(tag, message)
+        }
+        loggingInterceptor.level = level
+        return loggingInterceptor
     }
 
     private fun bodyToString(request: RequestBody?): String? {

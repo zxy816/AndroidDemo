@@ -4,6 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.zxy.androiddemo.bean.PagingBean
+import com.zxy.androiddemo.bean.VirHome
 import com.zxy.androiddemo.http.ApiService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -25,7 +26,7 @@ class ApiRepositoryImpl(private val api: ApiService, private val pageConfig: Pag
     }
 
 
-    override fun getVirApiHome(userName: String): Flow<List<String>> {
+    override fun getVirApiHome(userName: String): Flow<VirHome> {
         return flow {
             api.getVirHome(userName)
         }
