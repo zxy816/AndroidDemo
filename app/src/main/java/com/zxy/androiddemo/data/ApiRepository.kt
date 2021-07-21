@@ -14,5 +14,5 @@ interface ApiRepository {
 
     fun getHubAndroid(): Flow<PagingData<PagingBean>>
 
-    fun getVirApiHome(userName: String): Flow<VirHome>
+    suspend fun getVirApiHome(userName: String): Flow<VirHome>
 }

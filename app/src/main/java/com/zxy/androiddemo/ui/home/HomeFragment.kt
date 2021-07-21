@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.zxy.androiddemo.databinding.FragmentPagingBinding
 import com.zxy.androiddemo.ui.base.BaseFragment
@@ -19,7 +20,11 @@ class HomeFragment : BaseFragment() {
     private val binding get() = _binding
     private val viewModel: HomeViewModel by viewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         _binding = FragmentPagingBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -30,10 +35,8 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun loadData() {
-        lifecycleScope.launch {
-            viewModel.homeApi("zxy").collect {
-                println("========:${it}")
-            }
-        }
+        viewModel.homeApi("zxy").observe(viewLifecycleOwner, {
+            println(Thread.currentThread().name + "=======$it")
+        })
     }
 }
