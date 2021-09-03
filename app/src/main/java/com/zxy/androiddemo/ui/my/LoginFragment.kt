@@ -13,10 +13,14 @@ import com.zxy.androiddemo.ui.base.BaseFragment
 class LoginFragment : BaseFragment() {
 
     private lateinit var viewModel: LoginViewModel
-    private lateinit var _binding: FragmentLoginBinding
-    private val binding get() = _binding
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         _binding = FragmentLoginBinding.inflate(inflater, container, false);
         return binding.root
     }
@@ -29,5 +33,10 @@ class LoginFragment : BaseFragment() {
 
     private fun setOnClickListener() {
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

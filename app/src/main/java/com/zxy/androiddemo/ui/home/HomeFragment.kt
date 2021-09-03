@@ -16,8 +16,8 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
 
-    private lateinit var _binding: FragmentPagingBinding
-    private val binding get() = _binding
+    private var _binding: FragmentPagingBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
@@ -38,5 +38,10 @@ class HomeFragment : BaseFragment() {
         viewModel.homeApi("zxy").observe(viewLifecycleOwner, {
             println(Thread.currentThread().name + "=======$it")
         })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

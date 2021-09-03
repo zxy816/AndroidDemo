@@ -19,13 +19,16 @@ import kotlinx.coroutines.launch
 class PagingFragment : BaseFragment() {
 
     private val viewModel: PagingViewModel by viewModels()
-    private lateinit var _binding: FragmentPagingBinding
-    private val binding get() = _binding
+    private var _binding: FragmentPagingBinding? = null
+    private val binding get() = _binding!!
     private val adapter by lazy { PagingAdapter() }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         _binding = FragmentPagingBinding.inflate(inflater, container, false)
-        println("==========paging Fragment onCreateView==========")
         return binding.root
     }
 
@@ -38,7 +41,6 @@ class PagingFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        println("==========paging Fragment onActivityCreated==========")
         lifecycleScope.launch {
             viewModel.getHubAndroid.collectLatest {
                 adapter.submitData(it)
@@ -59,5 +61,10 @@ class PagingFragment : BaseFragment() {
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
