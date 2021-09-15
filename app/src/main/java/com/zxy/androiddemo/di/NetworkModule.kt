@@ -1,13 +1,12 @@
 package com.zxy.androiddemo.di
 
 import android.util.Log
-import com.zxy.androiddemo.http.ApiCallAdapterFactory
 import com.zxy.androiddemo.http.ApiService
 import com.zxy.androiddemo.http.HttpLoggingIntercepter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
@@ -25,8 +24,8 @@ import javax.inject.Singleton
  * @date: 2020/8/21
  * @des:hilt 网络
  */
-@InstallIn(ApplicationComponent::class)
 @Module
+@InstallIn(SingletonComponent::class)
 class NetworkModule {
     private val tag: String = NetworkModule::class.java.simpleName
     private val timeOut: Long = 5

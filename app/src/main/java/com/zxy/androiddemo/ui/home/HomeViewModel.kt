@@ -5,16 +5,20 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.zxy.androiddemo.bean.VirHome
 import com.zxy.androiddemo.data.ApiRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel @ViewModelInject constructor(
+@HiltViewModel
+class HomeViewModel @Inject constructor(
     val apiRepository: ApiRepository
 ) : ViewModel() {
     private val _virHome = MutableLiveData<VirHome>()
+
 
     fun homeApi(userName: String) = liveData {
         apiRepository.getVirApiHome(userName)

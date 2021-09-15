@@ -6,8 +6,8 @@ import com.zxy.androiddemo.db.dao.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 /**
@@ -15,8 +15,8 @@ import javax.inject.Singleton
  * @date: 2020/8/17
  * @des:
  */
-@InstallIn(ApplicationComponent::class)
 @Module
+@InstallIn(SingletonComponent::class)
 object RoomModule {
     @Provides
     @Singleton

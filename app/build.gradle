@@ -2,6 +2,7 @@ import com.zxy.plugin.*
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+//hilt
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
@@ -22,10 +23,6 @@ android {
         }
     }
 
-    viewBinding {
-        enabled = true
-    }
-
     signingConfigs {
         releaseConfig {
             keyAlias 'androiddebugkey'
@@ -33,19 +30,6 @@ android {
             storeFile file('C:/dxxt/DEV_APP_SZZT.jks')
             storePassword 'android'
         }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-
-    kotlinOptions {
-        jvmTarget = "11"
-        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
-    }
-
-    testOptions {
-        unitTests.returnDefaultValues = true
     }
 
     buildTypes {
@@ -56,6 +40,37 @@ android {
         }
         debug {
             signingConfig signingConfigs.releaseConfig
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+        useIR = true
+    }
+
+    viewBinding {
+        enabled = true
+    }
+
+    kapt {
+        correctErrorTypes true
+    }
+
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.0.1'
+        kotlinCompilerVersion '1.5.21'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
 }
@@ -69,12 +84,18 @@ dependencies {
     implementation Androidx.fragmentKtx
     // startup
     implementation Androidx.startupRuntime
+    //compose
+    implementation Compose.compose
+    implementation Compose.composeUI
+    implementation Compose.composeMaterial
+    implementation Compose.composeActivity
 
     testImplementation Test.junit
     androidTestImplementation Test.testJunit
     androidTestImplementation Test.testCore
+    androidTestImplementation Test.composeTest
+    debugImplementation Test.debugCompose
 
-    implementation Kt.stdlibJdk8
     //material(set button style)
     implementation Material.material
     //kotlin coroutines

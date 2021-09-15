@@ -1,49 +1,58 @@
 package com.zxy.plugin
 
 object Version {
-    const val kotlin = "1.5.0"
-    const val multidex = "1.0.3"
-    const val appcompat = "1.2.0"
-    const val constraintLayout = "2.0.4"
-    const val fragment = "1.2.5"
+    const val kotlin = "1.5.21"
+    const val multidex = "2.0.1"
+    const val appcompat = "1.3.0"
+    const val constraintLayout = "2.1.0"
+    const val fragment = "1.3.6"
     const val material = "1.2.0"
-    const val startupRuntime = "1.0.0-alpha03"
-    const val hilt = "2.28-alpha"
+    const val startupRuntime = "1.1.0"
+    const val hilt = "2.38.1"
     const val retrofit = "2.9.0"
     const val lifecycle = "2.3.0"
     const val navigation = "2.2.0"
-    const val room = "2.3.0-alpha01"
-    const val paging = "3.0.0-beta01"
+    const val room = "2.3.0"
+    const val paging = "3.0.0"
     const val glide = "4.11.0"
     const val coroutinesAndroid = "1.4.3"
     const val coroutinesCore = "1.3.9"
+    const val compose = "1.0.1"
 }
 
 object Androidx {
     const val multidex = "com.android.support:multidex:${Version.multidex}"
     const val appcompat = "androidx.appcompat:appcompat:${Version.appcompat}"
-    const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Version.constraintLayout}"
+    const val constraintLayout =
+        "androidx.constraintlayout:constraintlayout:${Version.constraintLayout}"
     const val fragment = "androidx.fragment:fragment:${Version.fragment}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Version.fragment}"
     const val startupRuntime = "androidx.startup:startup-runtime:${Version.startupRuntime}"
 }
 
-object Kt {
-    const val stdlibJdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Version.kotlin}"
-}
 
 object Material {
     const val material = "com.google.android.material:material:${Version.material}"
 }
 
+object Compose {
+    const val compose = "androidx.compose.ui:ui:${Version.compose}"
+    const val composeActivity = "androidx.activity:activity-compose:1.3.1"
+    const val composeMaterial = "androidx.compose.material:material:${Version.compose}"
+    const val composeUI = "androidx.compose.ui:ui-tooling-preview:${Version.compose}"
+}
+
 object Navigation {
-    const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Version.navigation}"
+    const val navigationFragment =
+        "androidx.navigation:navigation-fragment-ktx:${Version.navigation}"
     const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Version.navigation}"
 }
 
 object Coroutines {
-    const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutinesCore}"
-    const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutinesAndroid}"
+    const val coroutinesCore =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutinesCore}"
+    const val coroutinesAndroid =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutinesAndroid}"
 }
 
 object Hilt {
@@ -58,7 +67,8 @@ object Retrofit {
     const val retrofitGson = "com.squareup.retrofit2:converter-gson:${Version.retrofit}"
     const val retrofitRxjava = "com.squareup.retrofit2:adapter-rxjava2:${Version.retrofit}"
     const val okHttpIntercept = "com.squareup.okhttp3:logging-interceptor:3.9.0"
-    const val retrofitCoroutine = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
+    const val retrofitCoroutine =
+        "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
 }
 
 object LifeCycle {
@@ -92,4 +102,6 @@ object Test {
     const val junit = "junit:junit:4.13"
     const val testJunit = "androidx.test.ext:junit:1.1.2"
     const val testCore = "androidx.test.espresso:espresso-core:3.2.0"
+    const val composeTest = "androidx.compose.ui:ui-test-junit4:${Version.compose}"
+    const val debugCompose = "androidx.compose.ui:ui-tooling:${Version.compose}"
 }

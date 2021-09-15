@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import com.zxy.androiddemo.R
+import androidx.fragment.app.viewModels
 import com.zxy.androiddemo.databinding.FragmentWelcomeBinding
 import com.zxy.androiddemo.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WelcomeFragment : BaseFragment() {
-
-    private lateinit var welcomeModel: WelcomeViewModel
+    private val welcomeModel: WelcomeViewModel by viewModels()
     private var _binding: FragmentWelcomeBinding? = null
     private val binding get() = _binding!!
 
@@ -25,15 +24,6 @@ class WelcomeFragment : BaseFragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        welcomeModel = ViewModelProvider(this).get(WelcomeViewModel::class.java)
-        clickListener()
-    }
-
-    private fun clickListener() {
-
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

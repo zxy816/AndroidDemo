@@ -1,20 +1,20 @@
 package com.zxy.androiddemo.ui.my
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zxy.androiddemo.data.ApiRepository
 import com.zxy.androiddemo.data.DaoRepository
 import com.zxy.androiddemo.db.entries.Address
 import com.zxy.androiddemo.db.entries.User
-import com.zxy.androiddemo.http.ApiLoader
 import com.zxy.androiddemo.http.ApiResult
 import com.zxy.androiddemo.http.ApiService
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RegistViewModel @ViewModelInject constructor(
+@HiltViewModel
+class RegistViewModel @Inject constructor(
         private val userRepository: DaoRepository, private val apiService: ApiService) : ViewModel() {
 
     private val translateResult: MutableLiveData<String> = MutableLiveData()
