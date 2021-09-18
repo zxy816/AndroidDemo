@@ -20,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         lifecycle.addObserver(ViewLifeObserver())
+        //取消标题栏显示
+        this.supportActionBar?.hide()
+        //自定义nav背景资源时
+        binding.navView.itemIconTintList = null
         //NavigationView
         val navController = findNavController(R.id.nav_host_fragment)
         val appBarConfiguration = AppBarConfiguration(setOf(
