@@ -51,6 +51,11 @@ android {
     kotlinOptions {
         jvmTarget = '11'
         useIR = true
+
+        freeCompilerArgs += [
+                "-P",
+                "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true"
+        ]
     }
 
     viewBinding {
@@ -82,6 +87,7 @@ dependencies {
     implementation Androidx.constraintLayout
     implementation Androidx.fragment
     implementation Androidx.fragmentKtx
+    implementation Androidx.viewPager2
     // startup
     implementation Androidx.startupRuntime
     //compose

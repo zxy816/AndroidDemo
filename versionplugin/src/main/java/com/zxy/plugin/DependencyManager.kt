@@ -28,6 +28,7 @@ object Androidx {
     const val fragment = "androidx.fragment:fragment:${Version.fragment}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:${Version.fragment}"
     const val startupRuntime = "androidx.startup:startup-runtime:${Version.startupRuntime}"
+    const val viewPager2 = "androidx.viewpager2:viewpager2:1.0.0"
 }
 
 
