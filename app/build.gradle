@@ -123,6 +123,8 @@ dependencies {
 
     // Lifecycles only (without ViewModel or LiveData)
     implementation LifeCycle.lifecycleRuntime
+    implementation LifeCycle.rxlifecycle
+    implementation LifeCycle.rxlifecycleComponent
     //ViewModel
     implementation LifeCycle.lifecycleViewModel
     //LiveData

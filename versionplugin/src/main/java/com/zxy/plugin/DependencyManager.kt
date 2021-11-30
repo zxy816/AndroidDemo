@@ -18,6 +18,7 @@ object Version {
     const val coroutinesAndroid = "1.4.3"
     const val coroutinesCore = "1.3.9"
     const val compose = "1.0.1"
+    const val rxlifecycle4 = "4.0.0"
 }
 
 object Androidx {
@@ -77,6 +78,8 @@ object LifeCycle {
     const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycle}"
     const val lifecycleLivaData = "androidx.lifecycle:lifecycle-livedata-ktx:${Version.lifecycle}"
     const val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Version.lifecycle}"
+    const val rxlifecycle = "com.trello.rxlifecycle4:rxlifecycle:${Version.rxlifecycle4}"
+    const val rxlifecycleComponent = "com.trello.rxlifecycle4:rxlifecycle-components:${Version.rxlifecycle4}"
 }
 
 object Room {
